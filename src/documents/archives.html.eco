@@ -1,0 +1,13 @@
+---
+title: Archives
+layout: page
+pageOrder: 3
+---
+
+<nav class="linklist">
+	<% for document in @getCollection('posts').toJSON(): %>
+		<li><span><%= @getFormattedDate(document.date) %></span>
+		&raquo;
+		<a href="<%= document.url %>"><%= document.title %></a></li>
+	<% end %>
+</nav>
