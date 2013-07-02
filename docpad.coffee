@@ -1,3 +1,5 @@
+moment = require 'moment'
+
 # The DocPad Configuration File
 # It is simply a CoffeeScript Object which is parsed by CSON
 docpadConfig = {
@@ -77,7 +79,9 @@ docpadConfig = {
 		getPreparedKeywords: ->
 			# Merge the document keywords with the site keywords
 			@site.keywords.concat(@document.keywords or []).join(', ')
-
+		
+		getFormattedDate: (date) ->
+			moment(date || @document.date).format("ddd, MMM Do YYYY")
 
 	# =================================
 	# Collections
@@ -86,10 +90,10 @@ docpadConfig = {
 	collections:
 		pages: (database) ->
 			database.findAllLive({pageOrder: $exists: true}, [pageOrder:1,title:1])
-
+            
 		posts: (database) ->
-			database.findAllLive({tags:$has:'post'}, [date:-1])
-
+			database.findAllLive({status:$has:'publish'}, [date:-1]).on "add", (model) ->
+				model.setMetaDefaults({layout: "post", standalone: true})
 
 	# =================================
 	# Plugins

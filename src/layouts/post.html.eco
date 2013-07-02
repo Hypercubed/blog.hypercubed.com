@@ -4,10 +4,15 @@ layout: default
 
 <article id="post" class="post">
 	<h1><%= @document.title %></h1>
+    <h4><%= @getFormattedDate() %></h4>
 	<div class="post-content"><%- @content %></div>
 </article>
 
-<footer>
+<!-- Share -->
+<!-- Edit on Prose.io -->
+<!-- Disqus -->
+
+<!footer>
 	<% if  @document.relatedDocuments and @document.relatedDocuments.length: %>
 	<section id="related">
 		<h3>Related Posts</h3>
