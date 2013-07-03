@@ -14,7 +14,7 @@ docpadConfig = {
 		# Specify some site properties
 		site:
 			# The production url of our website
-			url: "http://website.com"
+			url: "http://blog.hypercubed.com/"
 
 			# Here are some old site urls that you would like to redirect from
 			oldUrls: [
@@ -23,7 +23,7 @@ docpadConfig = {
 			]
 
 			# The default title of our website
-			title: "Your Website"
+			title: "Hypercubed Blog"
 
 			# The website description (for SEO)
 			description: """
@@ -36,10 +36,10 @@ docpadConfig = {
 				"""
 
 			# The website author's name
-			author: "Your Name"
+			author: "J. Harshbarger"
 
 			# The website author's email
-			email: "your@email.com"
+			email: "hypercubed@gmail.com"
 
 			# Styles
 			styles: [

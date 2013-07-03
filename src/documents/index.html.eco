@@ -5,9 +5,12 @@ title: 'Home'
 
 <div class="row">
 	<nav class="linklist">
-		<% for document in @getCollection('posts').toJSON().slice(0,10): %>
-			<a href="<%= document.url %>"><%= document.title %></a>
-			<%- document.contentRenderedWithoutLayouts %>
+		<% for document in @getCollection('posts').toJSON().slice(0,3): %>
+			<article id="post" class="post">
+				<h2><a href="<%= document.url %>"><%= document.title %></a></h2>
+				<span class="meta"><%= @getFormattedDate(document.date) %></span>
+				<div class="post-content"><%- document.contentRenderedWithoutLayouts %></div>
+			</article>
 		<% end %>
 	</nav>
 </div>
