@@ -5,7 +5,7 @@ guid: 'http://blog.hypercubed.com/?p=701'
 status: "publish"
 date: '2011-07-04 00:29:33'
 post_id: '701'
-tags: [ 'Hypercubed Site' ]
+tags: [ 'site' ]
 ---
 A few days ago I mentioned upgrading my (very neglected) main site (<a href="http://hypercubed.com">hypercubed.com</a>) to <a href="http://modx.com/">MODx revolution</a>.  I didn’t bother migrating the commenting system from the old site because it was rarely used.  I didn't plan on implementing a commenting system at all on revolution.  Then I had the simple idea of using <a href="http://disqus.com/">DISQUS</a> (pronounced <em>discuss</em>).  DISQUS is that cross site commenting system you've undoubtedly seen on numerous blogs.  For visitors it allows posting of comments using any one of several log-ins (twitter, facebook, etc) and, if they are using a DISQUS account, track comments across multiple websites.
 
