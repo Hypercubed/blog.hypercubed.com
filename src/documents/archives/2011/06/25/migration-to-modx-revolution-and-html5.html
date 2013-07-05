@@ -1,0 +1,18 @@
+---
+title: "Migration to MODx Revolution (and HTML5)"
+post_name: "migration-to-modx-revolution-and-html5"
+status: "publish"
+date: '2011-06-25 16:15:03'
+post_id: '689'
+tags: [ 'Blogging' ]
+---
+<p>My main site (<a href="http://hypercubed.com">hypercubed.com</a>) has run on MODx classic (aka modx evolution) for several years. I felt it was time to enter the 2010s and move up to MODx revolution. Here is a brief summary of my experience.
+</p>
+<p> Probably the only real draw back to running MODx vs. Wordpress is the upgrades. One click is all it takes with Wordpress. MODx... not so much. I didn't even bother trying to upgrade. Instead I decided to go the manual route. I installed MODx revolution and manually copied content to the new site. Well, I actually used a little mysql magic. I won't delve into this as it basically amounts to a manual copy of the content and chunks (html snippets) from the old site to the new. Luckily my site is pretty small... your results may very. I didn't even bother with the comments on my old site which I would categorize as more abused than used.
+</p>
+<p>The MODx tags (part of the templating system) have changed significantly between evolution and revolution (see <a href="http://bobsguides.com/migrating-revolution.html">here</a>). It would have been pretty simple to just replace the tags and be up and running. However, since I was already in working on the site I decided to make the jump to HTML5. This was made very simple thanks to <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>. HTML Boilerplate template is simple and easily customizable. It comes with <a href="http://jquery.com/">jquery</a> and <a href="http://www.modernizr.com/">Modernizr</a> to ensure backwards compatibility with old browsers (and <a href="http://people.mozilla.com/~prouget/ie9/">IE9</a>).
+</p>
+<p> One great thing with MODx is <a href="http://rtfm.modx.com/display/revolution20/Contexts">contexts</a>. Using contexts I was able host multiple top level domains using use one MODx installation (and manager login). This might have been possible using MODx evolution but I never tried. Have a look at <a href="http://www.belafontecode.com/modx-revolution-hosting-multiple-domains/">this tutorial</a> on how to set this up. This is also a great way to have a "hidden" beta site to test changes before going live.
+</p>
+<p>So while the upgrading process has a lot to be desired; MODx more than makes up for it in flexibility. If you are running a non-blog site I still recommend MODx. If you are looking into jumping into HTML5 I suggest you check out HTML5 Boilerplate.
+</p>

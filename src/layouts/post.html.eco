@@ -14,7 +14,9 @@ layout: default
 			<% end %>
 		</span>.
 		<br />You can <a href="#disqus">leave a response</a>.
-		<br />Edit this entry<!-- proseIO link goes here -->
+		<br /><a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>">
+    Edit and improve this page via GitHub!
+</a>
 	</p>
 </article>
 
