@@ -53,8 +53,8 @@
 		</div>
 	</div>
 	<div class="container">
-		<div id="banner" class="hero-unit" style="padding: 5px; margin-top: 15px;  ">
-			<div id="header-image" class="header" style="background-image: url('http://pcdn.500px.net/29283085/093a45d64d31f7b8373dcdc34a7407f18a88b1f0/4.jpg'); background-size: cover; text-align: center; height: 300px; ">
+		<div id="banner" class="hero-unit">
+			<div id="header-image" class="header" >
 				<h1>Welcome to my new blog.</h1>
 			</div>
 		</div>
@@ -63,13 +63,12 @@
 		</section>
 		
 
-
 	</div><!-- /container -->
 	
 	<footer class="footer">
 		<p class="pull-left">&copy; <%= @site.author %> <%- (new Date()).getFullYear() %></p>
 		<p class="pull-right">
-			This website was last updated at <%= @site.date.toISOString() %>
+			This website was last updated at <%= @getFormattedDate(@site.date) %>
 		</p>
 	</footer>
 		

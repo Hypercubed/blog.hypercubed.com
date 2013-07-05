@@ -3,26 +3,36 @@ layout: default
 ---
 
 <article id="post" class="post">
-	<h1><%= @document.title %></h1>
-    <h4><%= @getFormattedDate() %></h4>
+	<h2><%= @document.title %></h2>
+    <span class="meta"><%= @getFormattedDate() %></span>
 	<div class="post-content"><%- @content %></div>
+	<p class="footer meta">
+		This entry was posted on <%= @getFormattedDate() %> and is filed under 
+		<span class="note-tags">
+			<% for tag in @document.tags: %>
+				<a href="tags/<%= tag %>"><%= tag %></a>
+			<% end %>
+		</span>.
+		<br />You can <a href="#disqus">leave a response</a>.
+		<br />Edit this entry<!-- proseIO link goes here -->
+	</p>
 </article>
 
 <!-- Share -->
-<!-- Edit on Prose.io -->
-<!-- Disqus -->
+<!-- @getSocialButtons() -->
 
-<!footer>
-	<% if  @document.relatedDocuments and @document.relatedDocuments.length: %>
-	<section id="related">
-		<h3>Related Posts</h3>
-		<nav class="linklist">
-			<% for document in @document.relatedDocuments: %>
-				<li><span><%= document.date.toDateString() %></span>
-				&raquo;
-				<a href="<%= document.url %>"><%= document.title %></a></li>
-			<% end %>
-		</nav>
-	</section>
-	<% end %>
-</footer>
+<a id="disqus"></a><h3 class="feedback">Feedback</h3>
+<%- @getDisqus() %>
+
+<% if  @document.relatedDocuments and @document.relatedDocuments.length: %>
+<section id="related">
+	<a id="related"></a><h3>Related Posts</h3>
+	<nav class="linklist">
+		<% for document in @document.relatedDocuments.slice(0,5): %>
+			<li><span><%= document.date.toDateString() %></span>
+			&raquo;
+			<a href="<%= document.url %>"><%= document.title %></a></li>
+		<% end %>
+	</nav>
+</section>
+<% end %>

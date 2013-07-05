@@ -1,0 +1,24 @@
+---
+title: Tags
+layout: page
+pageOrder: 4
+---
+
+<% tags = {} %>
+<% for document in @getCollection('posts').toJSON(): %>
+	<% for tag in document.tags: %>
+		<% tags[tag] = [] if (!tags[tag]) %>
+		<% tags[tag].push(document) %>
+	<% end %>
+<% end %>
+
+<nav class="linklist">
+	<% for tag, documents of tags: %>
+		<h4><%= tag %></h4>
+		<% for document in documents: %>
+			<li><span><%= @getFormattedDate(document.date) %></span>
+			&raquo;
+			<a href="<%= document.url %>"><%= document.title %></a></li>
+		<% end %>
+	<% end %>
+</nav>

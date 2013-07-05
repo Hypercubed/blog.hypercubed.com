@@ -2,4 +2,4 @@ node_modules/
 out/
 src/files/vendor/twitter-bootstrap
 src/documents/archives/
-src/backup/
+src/documents_bak/

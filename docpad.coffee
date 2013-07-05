@@ -14,7 +14,7 @@ docpadConfig = {
 		# Specify some site properties
 		site:
 			# The production url of our website
-			url: "http://blog.hypercubed.com/"
+			url: "http://blog.hypercubed.com"
 
 			# Here are some old site urls that you would like to redirect from
 			oldUrls: [
@@ -53,8 +53,10 @@ docpadConfig = {
 				"//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js",
 				"/scripts/script.js"
 			]
-
-
+			
+			services:
+				disqus: 'hypercubedblog'
+				googleAnalytics: 'UA-102465-1'
 
 		# -----------------------------
 		# Helper Functions
@@ -137,6 +139,13 @@ docpadConfig = {
 					res.redirect(newUrl+req.url, 301)
 				else
 					next()
+					
+	environments:
+		development:
+			templateData:
+				site:
+					services:
+						googleAnalytics: false
 }
 
 
