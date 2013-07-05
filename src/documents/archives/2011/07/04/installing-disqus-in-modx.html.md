@@ -5,7 +5,7 @@ guid: 'http://blog.hypercubed.com/?p=701'
 status: "publish"
 date: '2011-07-04 00:29:33'
 post_id: '701'
-tags: [ 'Hypercubed Site' ]
+tags: [ 'site' ]
 ---
 A few days ago I mentioned upgrading my (very neglected) main site (<a href="http://hypercubed.com">hypercubed.com</a>) to <a href="http://modx.com/">MODx revolution</a>.  I didn’t bother migrating the commenting system from the old site because it was rarely used.  I didn't plan on implementing a commenting system at all on revolution.  Then I had the simple idea of using <a href="http://disqus.com/">DISQUS</a> (pronounced <em>discuss</em>).  DISQUS is that cross site commenting system you've undoubtedly seen on numerous blogs.  For visitors it allows posting of comments using any one of several log-ins (twitter, facebook, etc) and, if they are using a DISQUS account, track comments across multiple websites.
 
@@ -33,7 +33,7 @@ The code below is what DISQUS calls the <a href="http://docs.disqus.com/develope
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 ```
 
-Now, simply adding this text to the template (<a href="http://codingpad.maryspad.com/2011/01/23/modx-revolution-for-complete-beginners-part-4-working-with-templates/">working with templates</a>) will enable comments on my site.  However, I don't want to have comments on every page.  So I placed the above HTML into a chunk (<a href="http://codingpad.maryspad.com/2011/01/30/modx-revolution-for-complete-beginners-part-5-working-with-chunks/">working with chunks</a>) called <code>[[$comments?]]</code>.  Then I created a template variable (<a href="http://codingpad.maryspad.com/2011/02/07/modx-revolution-for-complete-beginners-part-6-working-with-template-variables/">working with template variables</a>) called <code>[[*Comments]]</code>.  The <code>[[*Comments]]</code> template variable has an <em>input type</em> of <code>Check Box</code>, an <em>input options values</em> of <code>Enabled==1</code>, and a <em>default value</em> of <code>0</code>.
+Now, simply adding this text to the template (<a href="http://codingpad.maryspad.com/2011/01/23/modx-revolution-for-complete-beginners-part-4-working-with-templates/">working with templates</a>) will enable comments on my site.  However, I don't want to have comments on every page.  So I placed the above HTML into a chunk (<a href="http://codingpad.maryspad.com/2011/01/30/modx-revolution-for-complete-beginners-part-5-working-with-chunks/">working with chunks</a>) called <code>[[$comments?]]</code>.  Then I created a template variable (<a href="http://codingpad.maryspad.com/2011/02/07/modx-revolution-for-complete-beginners-part-6-working-with-template-variables/">working with template variables</a>) called `[[*Comments]]`.  The `[[*Comments]]` template variable has an <em>input type</em> of <code>Check Box</code>, an <em>input options values</em> of <code>Enabled==1</code>, and a <em>default value</em> of <code>0</code>.
 
 Then in my template, where I wish to have the DISQUS comments appear, I added the following code:
 
