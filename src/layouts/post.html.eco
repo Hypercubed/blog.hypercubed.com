@@ -10,7 +10,7 @@ layout: default
 		This entry was posted on <%= @getFormattedDate() %> and is filed under 
 		<span class="note-tags">
 			<% for tag in @document.tags: %>
-				<a href="tags/<%= tag %>"><%= tag %></a>
+				<a href="/tags#<%= tag %>"><%= tag %></a>
 			<% end %>
 		</span>.
 		<br />You can <a href="#disqus">leave a response</a>.

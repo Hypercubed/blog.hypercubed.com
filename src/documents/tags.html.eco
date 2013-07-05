@@ -14,7 +14,7 @@ pageOrder: 4
 
 <nav class="linklist">
 	<% for tag, documents of tags: %>
-		<h4><%= tag %></h4>
+		<h4><a id="<%= tag %>"></a><%= tag %></h4>
 		<% for document in documents: %>
 			<li><span><%= @getFormattedDate(document.date) %></span>
 			&raquo;

@@ -7,7 +7,7 @@ title: 'Home'
 	<nav class="linklist">
 		<% for document in @getCollection('posts').toJSON().slice(0,3): %>
 			<article id="post" class="post">
-				<h2><a href="<%= document.url %>"><%= document.title %></a></h2>
+				<h3><a href="<%= document.url %>"><%= document.title %></a></h3>
 				<span class="meta"><%= @getFormattedDate(document.date) %></span>
 				<div class="post-content"><%- document.contentRenderedWithoutLayouts %></div>
 			</article>
