@@ -3,14 +3,16 @@ layout: default
 ---
 
 <div class="">
-
-<% for document,documentIndex in @getCollection('posts').toJSON(): %>
+<% collection = @getCollection('posts').toJSON() %>
+<% for document,documentIndex in collection: %>
     <% if @document.id is document.id: %>
         <% if documentIndex >= 1: %>
-            <a class="" href="<%= @getCollection('posts').toJSON()[documentIndex-1].url %>" class="next">next</a>
+			<% next = collection[documentIndex-1] %>
+            <a class="" href="<%= next.url %>" class="next">«<%= next.title %></a>
         <% end %>
         <% if documentIndex < @getCollection('posts').length - 1: %>
-             <a class="pull-right" href="<%= @getCollection('posts').toJSON()[documentIndex+1].url %>" class="previous">prev</a>
+			<% prev = collection[documentIndex+1] %>
+            <a class="pull-right" href="<%= prev.url %>" class="previous"><%= prev.title %>»</a>
         <% end %>
     <% end %>
 <% end %>

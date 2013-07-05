@@ -1,6 +1,7 @@
 ---
 title: "Installing DISQUS in MODx"
 post_name: "installing-disqus-in-modx"
+guid: 'http://blog.hypercubed.com/?p=701'
 status: "publish"
 date: '2011-07-04 00:29:33'
 post_id: '701'
