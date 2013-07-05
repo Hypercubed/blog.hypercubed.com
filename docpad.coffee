@@ -44,6 +44,8 @@ docpadConfig = {
 			# Styles
 			styles: [
 				"/styles/twitter-bootstrap.css"
+				"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+				"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 				"/styles/style.css"
 			]
 
@@ -51,6 +53,7 @@ docpadConfig = {
 			scripts: [
 				"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js",
 				"//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js",
+				"/vendor/twitter-bootstrap/js/bootstrap-affix.js",
 				"/scripts/script.js"
 			]
 			
@@ -83,7 +86,7 @@ docpadConfig = {
 			@site.keywords.concat(@document.keywords or []).join(', ')
 		
 		getFormattedDate: (date) ->
-			moment(date || @document.date).format("ddd, MMM Do YYYY")
+			moment(date || @document.date).format("MMM Do YYYY")
 
 	# =================================
 	# Collections

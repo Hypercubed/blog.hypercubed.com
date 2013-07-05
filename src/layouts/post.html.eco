@@ -2,50 +2,57 @@
 layout: default
 ---
 
-<div class="">
 <% collection = @getCollection('posts').toJSON() %>
 <% for document,documentIndex in collection: %>
     <% if @document.id is document.id: %>
-        <% if documentIndex >= 1: %>
-			<% next = collection[documentIndex-1] %>
-            <a class="" href="<%= next.url %>" class="next">«<%= next.title %></a>
-        <% end %>
-        <% if documentIndex < @getCollection('posts').length - 1: %>
-			<% prev = collection[documentIndex+1] %>
-            <a class="pull-right" href="<%= prev.url %>" class="previous"><%= prev.title %>»</a>
-        <% end %>
+		<% @index = documentIndex %>
+        <% @next = collection[@index-1] %>
+		<% @prev = collection[@index+1] %>
     <% end %>
 <% end %>
 
+<div class="row">
+	<% if @next: %>
+		<a class="" href="<%= @next.url %>" class="next">«<%= @next.title %></a>
+	<% end %>
+	<% if @prev: %>
+		<a class="pull-right" href="<%= @prev.url %>" class="previous"><%= @prev.title %>»</a>
+	<% end %>
 </div>
 
 <article id="post" class="post">
 	<h2><%= @document.title %></h2>
-    <span class="meta"><%= @getFormattedDate() %></span>
-	<div class="post-content"><%- @content %></div>
-	<p class="footer meta">
-		This entry was posted on <%= @getFormattedDate() %> and is filed under 
+	<span class="meta">
+		<i class="icon-calendar"></i> <%= @getFormattedDate(@document.date) %>
+		<i class="icon-search"></i> 
 		<span class="note-tags">
 			<% for tag in @document.tags: %>
 				<a href="/tags#<%= tag %>"><%= tag.toLowerCase() %></a>
 			<% end %>
-		</span>.
-		<br />You can <a href="#disqus">leave a response</a>.
-		<br /><a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>">
-				Edit and improve this page via GitHub!
-			  </a>
-	</p>
+		</span>
+	</span>
+	<div class="post-content"><%- @content %></div>
 </article>
+
+<p class="post-footer meta">
+	Feedback?
+	<br />You can <a href="#disqus">leave a response</a>.
+	<br /><a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>">
+			Edit and improve this page via GitHub!
+		  </a>
+</p>
 
 <!-- Share -->
 <!-- @getSocialButtons() -->
 
-<a id="disqus"></a><h3 class="feedback">Feedback</h3>
-<%- @getDisqus() %>
+<section id="feedback">
+	<a id="disqus"></a>
+	<%- @getDisqus() %>
+</section>
 
 <% if  @document.relatedDocuments and @document.relatedDocuments.length: %>
 <section id="related">
-	<a id="related"></a><h3>Related Posts</h3>
+	<a id="related"></a><h4>Related Posts</h4>
 	<nav class="linklist">
 		<% for document in @document.relatedDocuments.slice(0,5): %>
 			<li><span><%= document.date.toDateString() %></span>

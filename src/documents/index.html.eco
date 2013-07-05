@@ -8,7 +8,15 @@ title: 'Home'
 		<% for document in @getCollection('posts').toJSON().slice(0,5): %>
 			<article id="post" class="post">
 				<h3><a href="<%= document.url %>"><%= document.title %></a></h3>
-				<span class="meta"><%= @getFormattedDate(document.date) %></span>
+				<span class="meta">
+					<i class="icon-calendar"></i> <%= @getFormattedDate(document.date) %>
+					<i class="icon-search"></i> 
+					<span class="note-tags">
+						<% for tag in document.tags: %>
+							<a href="/tags#<%= tag %>"><%= tag.toLowerCase() %></a>
+						<% end %>
+					</span>
+				</span>
 				<div class="post-content"><%- document.contentRenderedWithoutLayouts %></div>
 			</article>
 		<% end %>
