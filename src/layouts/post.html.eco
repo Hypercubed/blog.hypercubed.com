@@ -2,6 +2,21 @@
 layout: default
 ---
 
+<div class="">
+
+<% for document,documentIndex in @getCollection('posts').toJSON(): %>
+    <% if @document.id is document.id: %>
+        <% if documentIndex >= 1: %>
+            <a class="" href="<%= @getCollection('posts').toJSON()[documentIndex-1].url %>" class="next">next</a>
+        <% end %>
+        <% if documentIndex < @getCollection('posts').length - 1: %>
+             <a class="pull-right" href="<%= @getCollection('posts').toJSON()[documentIndex+1].url %>" class="previous">prev</a>
+        <% end %>
+    <% end %>
+<% end %>
+
+</div>
+
 <article id="post" class="post">
 	<h2><%= @document.title %></h2>
     <span class="meta"><%= @getFormattedDate() %></span>
@@ -10,13 +25,13 @@ layout: default
 		This entry was posted on <%= @getFormattedDate() %> and is filed under 
 		<span class="note-tags">
 			<% for tag in @document.tags: %>
-				<a href="/tags#<%= tag %>"><%= tag %></a>
+				<a href="/tags#<%= tag %>"><%= tag.toLowerCase() %></a>
 			<% end %>
 		</span>.
 		<br />You can <a href="#disqus">leave a response</a>.
 		<br /><a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>">
-    Edit and improve this page via GitHub!
-</a>
+				Edit and improve this page via GitHub!
+			  </a>
 	</p>
 </article>
 
