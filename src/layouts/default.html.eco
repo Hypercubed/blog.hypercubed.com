@@ -63,15 +63,15 @@
 			<%- @content %>
 		</section>
 		
+
+	</div><!-- /container -->
+	
 		<footer class="footer">
-			<p class="pull-left">&copy; <%= @site.author %> <%- (new Date()).getFullYear() %></p>
+			<p class="pull-left">Copyright &copy; <%- (new Date()).getFullYear() %> - <%= @site.author %> - Powered by <a href="http://docpad.org/">Docpad</a></p>
 			<p class="pull-right">
 				This website was last updated at <%= @getFormattedDate(@site.date) %>
 			</p>
 		</footer>
-	</div><!-- /container -->
-	
-
 		
 	<!-- Scripts -->
 	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>

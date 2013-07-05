@@ -41,7 +41,8 @@
     "docpad-plugin-stylus": "2.x",
     "docpad-plugin-text": "2.x",
     "moment": "~2.0.0",
-    "docpad-plugin-services": "~2.2.6"
+    "docpad-plugin-services": "~2.2.6",
+    "docpad-plugin-highlightjs": "~2.1.7"
   },
   "devDependencies": {
     "docpad-plugin-livereload": "2.x"

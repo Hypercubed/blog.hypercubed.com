@@ -6,8 +6,16 @@ pageOrder: 3
 
 <nav class="linklist">
 	<% for document,index in @getCollection('posts').toJSON(): %>
-		<li><span><%= @getFormattedDate(document.date) %></span>
-		&raquo;
-		<a href="<%= document.url %>"><%= document.title %></a></li>
+		<% year = @getFormattedDate(document.date, "YYYY") %>
+		<% day = @getFormattedDate(document.date, "MMM Do") %>
+		<% if (index == 0 || year != lastYear): %>
+			<h3><%= lastYear = year %></h3>
+		<% end %>
+		<% if (index == 0 || year != lastYear || day != lastDay): %>
+			<h5><%= lastDay = day %></h5>
+		<% end %>
+		<li>
+			<a href="<%= document.url %>"><%= document.title %></a>
+		</li>
 	<% end %>
 </nav>
