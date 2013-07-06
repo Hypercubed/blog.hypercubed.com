@@ -1,0 +1,19 @@
+---
+title: "Embedded Haloscan Trackback"
+post_name: "embedded-haloscan-trackback"
+guid: 'http://www.hypercubed.com/wordpress/?p=42'
+status: "publish"
+date: '2005-05-14 12:15:00'
+post_id: '42'
+tags: [ 'Blogging' ]
+---
+<div style="clear:both;"></div><p>My last post contained a link to <a href="http://bloggerhacks.blogspot.com/">BloggerHacks</a> and <a href="http://www.haloscan.com/">Haloscan</a>. I thought I�d now offer my own hack involving the Haloscan trackback system. Typically when Haloscan�s trackback system is added to a blog it is added as a simple link that invokes a pop-up window containing the trackback information from Haloscan (see <a href="javascript:HaloScanTB('111605024656366770')">example</a>). It is actually very easy to embed this page inside your blog using embedded frames. I'm going to provide instructions for adding this to a <a href="http://www.blogger.com/">Blooger.com</a> template but it can easily be adapted to other systems.<br /><br />First add the Haloscan JavaScript to you page as instructed to do at haloscan. Copy and paste the following code anywhere between your &lt;HEAD&gt; and &lt;HEAD&gt; tags in your page:</p><p><pre><code lang="html" blocktype="pre"><script type="text/javascript" src="http://www.haloscan.com/load/[your_halosan_id]"></script></code></pre></p><p>Be sure to replace [your_haloscan_id] with your haloscan id or copy the text directly form the haloscan page.<br /><br />Next you will add the embedded frame. I only want the trackback page to appear on the individual entry pages so I place the following text between the <itempage></itempage>tags below the comments section:</p><p>
+
+<br /><pre><code lang="html" enc="true"><div id="trackbacks"><a name="trackbacks"></a><h4>
+<script type="text/javascript">postCountTB('<$BlogItemNumber$>');
+</script></h4>
+	<iframe width="100%" height="250" src="http://haloscan.com/tb/[your_haloscan_id]/<$BlogItemNumber$>" title="Trackbacks" marginwidth="0" marginheight="0" width="120" height="240" border="2" frameborder="0" style="border:none;" scrolling="yes"></iframe>
+</div>
+</code></pre>
+
+</p><p>Again replace [your_haloscan_id] with your haloscan id. That is mostly it, not much to it. You may notice that I have placed all the trackback code inside a &lt;div&gt; with an id set to trackbacks. This is so you can edit the CSS portion of your template to format the trackback section however you like it. I'm not going to go into the details of this because everyone's template is different but to start you can try coping the #comments and #comments h4 in the CSS section to #trackbacks and #trackbacks h4.</p>

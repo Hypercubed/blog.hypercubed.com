@@ -2,17 +2,18 @@
 title: Archives
 layout: page
 pageOrder: 3
+icon: icon-calendar
 ---
 
 <nav class="linklist">
 	<% for document,index in @getCollection('posts').toJSON(): %>
 		<% year = @getFormattedDate(document.date, "YYYY") %>
-		<% day = @getFormattedDate(document.date, "MMM Do") %>
+		<% month = @getFormattedDate(document.date, "MMM") %>
 		<% if (index == 0 || year != lastYear): %>
 			<h3><%= lastYear = year %></h3>
 		<% end %>
-		<% if (index == 0 || year != lastYear || day != lastDay): %>
-			<h5><%= lastDay = day %></h5>
+		<% if (index == 0 || year != lastYear || month != lastMonth): %>
+			<h5><%= lastMonth = month %></h5>
 		<% end %>
 		<li>
 			<a href="<%= document.url %>"><%= document.title %></a>

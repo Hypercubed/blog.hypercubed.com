@@ -4,6 +4,14 @@ moment = require 'moment'
 # It is simply a CoffeeScript Object which is parsed by CSON
 docpadConfig = {
 
+	# Documents Paths
+	# An array of paths which contents will be treated as documents
+	# If it is a relative path, it will have the resolved `srcPath` prepended to it
+	documentsPaths: [
+		'documents',
+		'documents_archive'
+	]
+
 	# =================================
 	# Template Data
 	# These are variables that will be accessible via our templates
@@ -46,6 +54,7 @@ docpadConfig = {
 				"/styles/twitter-bootstrap.css"
 				"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
 				"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+				"/styles/tomorrow-night-eighties.css"
 				"/styles/style.css"
 			]
 
@@ -149,6 +158,10 @@ docpadConfig = {
 				site:
 					services:
 						googleAnalytics: false
+					url:
+						'http://localhost:9778'
+			documentsPaths: [ 'documents' ]
+
 }
 
 

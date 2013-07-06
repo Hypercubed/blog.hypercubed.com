@@ -1,0 +1,26 @@
+---
+title: "HOW TO: Use Physics Illustrator on non-tablet PC"
+post_name: "how-to-use-physics-illistrator-on-non-tablet-pc"
+guid: 'http://blog.hypercubed.com/index.php/archives/2006/02/05/how-to-use-physics-illistrator-on-non-tablet-pc/'
+status: "publish"
+date: '2006-02-05 01:24:43'
+post_id: '176'
+tags: [ 'Applications' ]
+---
+<b><i>Note: Many people are having difficulty getting these instructions to work. Please read the <a href="#comments">comments</a> below.
+
+  <p>
+Thanks to <cite>Scott Pritchard</cite> the executible, help file, and examples are located here:</p>
+  <p><a href="http://rapidshare.com/files/1284020/Microsoft_Physics_Illustrator.zip.html" class="external">http://rapidshare.com/files/1284020/Microsoft_Physics_Illustrator.zip.html</a></p>
+  <p>If you have trouble running the application try installing this file here (thanks to <cite>Vik)</cite></p>
+  <p><a href="http://www.msgshit.com/download/445" class="external">http://www.msgshit.com/download/445</a></p>
+  <br />
+</i></b><a class="imagelink" href="http://blog.hypercubed.com/wp-content/uploads/2006/02/PI.gif" title="Physics Illustrator">
+<img id="image184" src="http://blog.hypercubed.com/wp-content/uploads/2006/02/PI.thumbnail.gif" alt="Physics Illustrator" align="right" border="0" height="188" hspace="0" vspace="0" width="255" /></a>
+<p>I recently discovered <a href="http://www.microsoft.com/windowsxp/downloads/powertoys/tabletpc.mspx#ETBAC">Microsoft Physics Illustrator for Tablet PC</a> by <a href="http://research.microsoft.com/">Microsoft Research</a> which seemed very interesting.&nbsp; On your tablet PC screen you draw things like balls and brick walls and join them with joints, ropes, and rods. Add some forces and see what happens. Unfortunately it is for Tablet PC only.&nbsp; If you attempt to install the application on a regular PC it will stop with a message saying "Application can only be installed on a Tablet PC".&nbsp; But as is my nature I didn't just stop there.&nbsp; I found that you can <a href="http://research.microsoft.com/research/downloads/Details/aeee3085-a219-47d6-88fc-a2501f00800d/Details.aspx">download the source</a>.&nbsp; The source comes will all the files you need to run the Tablet PC application on your PC... except for the actual Physics Illustrator executable.&nbsp; That is easily solved by opening the source with the <a href="http://msdn.microsoft.com/vstudio/express/vb/download/">free Visual C# Express</a>.&nbsp; Visual Basic will automatically convert the C# 2003 source to C# 2005 with no problems.&nbsp; Compile the application and then in your bin directory you can double click the PhysicsIllustrator.exe and start illustrating physics on your standard desktop.
+</p>
+<p>This works great for getting the feel of the application.&nbsp; Running the tablet PC application on your desktop can be a little quirky.&nbsp; Sometimes the <abbr title="User Interface">UI</abbr> just stops responding.&nbsp; You just need to close the application and start again.&nbsp; Probably not much we can do about that.&nbsp;
+</p>
+<p>Another problem is that all the help files and many of the example files are not included in the source.&nbsp; Without the help files this application is extremely difficult to figure out. Well we can fix this but it takes a little more work.&nbsp; Go back and get the <a href="http://www.microsoft.com/windowsxp/downloads/powertoys/tabletpc.mspx#ETBAC">physics illustrator installation file</a> (the one that won't finish installing).&nbsp; Start the installation.&nbsp; When you get to&nbsp; the "Application can only be installed on a Tablet PC" go to your temp directory (usually <code>c:\temp\</code>). You should see a directory named <code>_is2E</code> or something similar containing a file called <code>Microsoft Physics Illustrator for Tablet PC.msi</code>.&nbsp; Copy this file to a new directory.&nbsp; Press OK and Finish to cancel the installation.&nbsp; You now need to extract all the files from the msi file.&nbsp; You may have your own method but I use <a href="http://blogs.pingpoet.com/overflow/archive/2005/06/02/2449.aspx">Less MSI'rables</a>.&nbsp; Download Less MSI'rables, extract the files from the zip file, and run <code>lessmsi.exe</code>.&nbsp; Open <code>Microsoft Physics Illustrator for Tablet PC.msi</code> and extract all the .chm file and all the .physi files.&nbsp; Do not extract the exe or dll files.&nbsp; They are not the same as what you compiled with C#.&nbsp; Place these files in the same directory as the Physics Illustrator executable and your good to go.&nbsp; Enjoy.
+  <br />&nbsp;
+</p>

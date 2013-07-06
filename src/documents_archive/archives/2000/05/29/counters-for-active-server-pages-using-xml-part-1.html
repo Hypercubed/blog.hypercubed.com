@@ -1,0 +1,127 @@
+---
+title: "Counters for Active Server Pages using XML (part 1)"
+post_name: "counters-for-active-server-pages-using-xml-part-1"
+guid: 'http://blog.hypercubed.com/archives/2000/05/29/counters-for-active-server-pages-using-xml-part-1/'
+status: "publish"
+date: '2000-05-29 22:47:01'
+post_id: '205'
+tags: [ 'Web Programming' ]
+---
+One of the first questions asked by anyone that has a web page is "How many people are visiting my site?" Or you may ask more sophisticated questions such as "How many people have clicked on this link" or "How many have downloaded this file?" Page counters are quite common these days. There are plenty of services that allow you to count your page hits by simply including a small graphic. What I describe here is first a generic counter that stores counts in an XML file. Then I will describe how to use this counter to count page hits, ASP sessions, links, downloads, etc. 
+<p>
+</p>
+<h2>The Counter
+</h2>
+<p>First order of business is to establish how to count. You may wish to include a third-party counters or add a database to your server to store the information.. This, however, may not be practical or even possible depending on your server configuration. You may decide to write an ASP script to store page counts in a Application variable. However, these counters are not persistent when the server is restarted. After thinking about it for a while I thought it would be much better, more educational, and more fulfilling to develop a system to store the counts in an XML file. The XML file is parsed using the Microsoft XML parser. 
+</p>
+<p>First let's create an empty XML file that will store our counts. There is no need to populate the XML file with any data at this time our counters will be created as they are needed. 
+</p>
+<pre><code lang="xml">&lt;?xml version="1.0"?&gt;
+&lt;counts&gt;
+  &lt;count&gt;
+    &lt;name&gt;&lt;/name&gt;
+    &lt;count&gt;&lt;/count&gt;
+
+  &lt;/count&gt;
+&lt;/counts&gt;
+</code></pre>
+<p>The XML represents a data set named "counts". Each count is represented by the "count" tag. Each count contains two items: name and count. Save this file to: /counts.xml. 
+</p>
+<p>If we were counting page hits on two pages; say page1 and page2 then our counts.xml file may look like this: 
+</p>
+<pre><code lang="xml">&lt;?xml version="1.0"?&gt;
+&lt;counts&gt;
+  &lt;count&gt;
+    &lt;name&gt;page1&lt;/name&gt;
+
+    &lt;count&gt;21&lt;/count&gt;
+  &lt;/count&gt;
+    &lt;count&gt;
+    &lt;name&gt;page2&lt;/name&gt;
+    &lt;count&gt;43&lt;/count&gt;
+
+  &lt;/count&gt;
+&lt;/counts&gt;
+</code></pre>
+<p>Now let's look at the IncCounter sub procedure: 
+</p>
+<pre><code>Function IncCounter(CountName)
+  Dim rootNode
+  Dim xmlDOC
+  Dim Found
+  Dim Count
+
+</code></pre> 
+<p>Here we have simply created a IncCounter sub procedure that is called with the argument CountName. CountName is a string that is the name of the count we wish to increment. Also in the above example we declare all variables. 
+</p>
+<pre><code lang="asp">  Set xmlDOC = Server.CreateObject("Microsoft.XMLDOM")
+  xmlDOC.async = false
+  xmlDOC.load Server.MapPath("\counts.xml")
+</code></pre>
+<p>Here we create an instance of the XML DOM and load the counts.xml file using the load method. The load method requires the physical path therefore we use the Server.MapPath method. 
+</p>
+<pre><code lang="asp">  Found = False
+  Count = 0
+
+  Set rootNode = xmlDOC.selectSingleNode("counts")
+  For Each Node in rootNode.selectNodes("count")
+	If Node.selectSingleNode("name").Text = CountName Then
+		Count = Node.selectSingleNode("count").Text
+		Found = True
+		Exit For
+	End if
+  Next
+
+</code></pre>
+<p>Here we have set the rootNode to be our "counts" data set. Then we simply iterate through the DOM to find the count node that has a name equal to our CountName argument. If the count is found then the current count read into the count variable and the found flag is set to true. 
+</p>
+<pre><code lang="asp">  If Not Found Then
+  	Set Node = rootNode.appendChild( _
+		rootNode.selectSingleNode("count").CloneNode(TRUE))
+	Node.selectSingleNode("name").Text = CountName
+  End If
+</code></pre>
+<p>Here if the correct node is not found then we can add it. This is done by cloning one of the other count nodes and then setting the name equal to the CountName variable. 
+</p>
+<p>Now we increment the count, update the current node, and save the document. 
+</p>
+<pre><code lang="asp">
+  IncCounter = Count
+  Count = Count + 1
+
+  Node.selectSingleNode("count").Text = Count
+  xmlDOC.save xmlSRC
+End Sub
+</code></pre>
+<p>Notice that the current count (the count before being incremented) is returned by the IncCounter. 
+</p>
+<p>Now to retrieve the counts. 
+</p>
+<pre><code lang="asp">Function GetCounter(CountName)
+  Dim xmlDOC
+  Dim Count
+
+  Set xmlDOC = Server.CreateObject("Microsoft.XMLDOM")
+  xmlDOC.async = false
+  xmlDOC.load Server.MapPath("counts.xml")
+
+  Count = 0
+  For Each Node in _
+    xmlDOC.selectSingleNode("counts").selectNodes("count")
+	If Node.selectSingleNode("name").Text = CountName Then
+		Count = Node.selectSingleNode("count").Text
+	End if
+  Next
+  GetCounter = Count
+End Function
+</code></pre>
+<p>This function is quite similar to the IncCounter. It simply loads the XML file, iterates through the DOM to find the correct count node, and returns the count. 
+</p>
+<p>You can store these functions in an include file say, "counter.inc.asp". Then all that is needed is an &lt;!--Include--&gt; in any page that you wish to perform a count. 
+</p>
+<p>Other information can be easily included with in the XML file by simple modifications to the IncCounter function. For instance, the date when the count was created, the date the count was last incremented, or perhaps the IP address of the last visit. You will also need to modify the counts.xml file to reflect the new structure. 
+</p>
+<p>This system uses the xmlDOC.load and xmlDOC.save methods, which access the xml file directly. I have not timed these methods or measured their impact on the server. I suspect that these methods are faster then the File System object methods but may still pose a significant demand on the file server. Furthermore, I don't believe that the "load" method locks the file therefore if there is more then one simultaneous call to these functions some counts may be missed. This method may not be suitable for sites with a heavy load. 
+</p>
+<p>In <a href="http://blog.hypercubed.com/archives/2000/05/29/counters-for-active-server-pages-using-xml-part-2/">Part 2</a> we look at several different ways to use counters. 
+</p>

@@ -1,0 +1,65 @@
+---
+title: "WordPress 2.0: Hide post preview"
+post_name: "wordpress-20-hide-post-preview"
+guid: 'http://blog.hypercubed.com/index.php/archives/2006/01/03/wordpress-20-hide-post-preview/'
+status: "publish"
+date: '2006-01-03 08:44:38'
+post_id: '166'
+tags: [ 'WordPress' ]
+---
+If you're using WordPress 2.0 you may notice one of the cool new features is the post preview.  When you save a post or edit a post down at the bottom of the post page you are presented with a preview of your post.  This preview shows the whole page (not just the post text), logo, navigation, everything that is on the main page.  I really like this feature but I don't always want to use it. Most of the time I don't need to look at it.  For example when making a simple change.  So it is just a waist of bandwidth and server power. If you read my blog regularly <s>I'm sorry</s> you know that I never just accept these types of things.  So I modified the <code>/wp-admin/post.php</code> file to allow me to view the preview only when I need it.  I considered making this a plugin but as far as I can tell there is no way of preventing the preview page from loading via a plugin.  I could easily hide it but the data will still be pulled from the server.  So if you would like to make the changes yourself open <code>/wp-admin/post.php</code> and find line 85
+<p /><pre><code lang="php" enc="true"><iframe src="<?php the_permalink(); ?>" width="100%" height="600" ></iframe></code></pre>
+<p />and replace it with 
+<p /><pre><code lang="php" enc="true">
+<script type="text/javascript">
+<!--
+  function show_preview() {
+    var elm = document.getElementById("frm_preview");
+    elm.src = "<?php the_permalink(); ?>";
+    elm.height = "600";
+    return false;
+  }
+-->
+</script>
+<a href="#preview-post" onclick="show_preview();">Show Preview</a>
+<iframe id="frm_preview" src="" width="100%" height="10" ></iframe>
+</code></pre>
+<p />I've <a href="http://trac.wordpress.org/ticket/2200">posted this</a> to the official WordPress tracker for possible inclusion in the next release.
+<p />
+<strong>* Edit for 2.0.1*</strong><br />
+If you are using WordPress version 2.0.1 then you should replace line 83 in <code>/wp-admin/post.php</code> with:
+<br />
+<pre><code lang="php">
+<script type="text/javascript">
+<!--
+  function show_preview() {
+    var elm = document.getElementById("frm_preview");
+    elm.src = "<?php echo add_query_arg('preview', 'true', get_permalink($post->ID)); ?>";
+    elm.height = "600";
+    return false;
+  }
+-->
+</script>
+<a href="#preview-post" onclick="show_preview();">Show Preview</a>
+<iframe id="frm_preview" src="" width="100%" height="10" ></iframe>
+</code></pre>
+
+<strong>* Edit for 2.1 *</strong><br />
+If you are using WordPress version 2.1 then you should replace line 72 in <code>/wp-admin/post.php</code> with:
+<br />
+<pre><code lang="php">
+<script type="text/javascript">
+<!--
+  function show_preview() {
+	var elm = document.getElementById("frm_preview");
+	elm.src = "<?php echo attribute_escape(apply_filters('preview_post_link', add_query_arg('preview', 'true', get_permalink($post->ID)))); ?>";
+	elm.height = "600";
+	return false;
+  }
+-->
+</script>
+<a href="#preview-post" onclick="show_preview();">Show Preview</a>
+<iframe id="frm_preview" src="" width="100%" height="10" ></iframe>
+</code></pre>
+<strong>* Edit for 2.2 *</strong><br />
+Preview is no longer inline so this change is not needed.

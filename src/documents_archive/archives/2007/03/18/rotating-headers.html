@@ -1,0 +1,31 @@
+---
+title: "Rotating Headers"
+post_name: "rotating-headers"
+guid: 'http://blog.hypercubed.com/archives/2007/03/18/rotating-headers/'
+status: "publish"
+date: '2007-03-18 18:52:03'
+post_id: '303'
+tags: [ 'Blogging' ]
+---
+I was checking my watchlist on <a href="http://www.technorati.com/">Technorati</a> and noticed that John Governale over at <a href="http://exceedinglycurious.com/">exceedinglycurious.com</a> had mentioned <a href="http://exceedinglycurious.com/2007/02/rotating-headers">my name</a>.  Yes, I have my own name on my Technorati.  It's not egotistic.. just curiosity.  John had noticed that my <a href="http://blog.hypercubed.com/about/headers/">header images</a> rotate.  Go ahead... hit refresh... I'll wait...
+
+Welcome back.  So John decided to implement the same thing on his blog.  John found one of the many rotate image files on the Internet.  These PHP scripts are very simple to use.  You place the rotate.php file (or whatever it is called) into a directory and every time it is called a random image from that same directory is returned.  As far as the browser is concerned it thinks rotate.php is an image.  John then replaced the URL for the header image in his CSS with a reference to the rotate.php file and boom.  Rotating headers.
+
+This is a nice and simple technique that many people use.  Even I used it for a few days on my site before changing my mind.  Here is the problem.  When someone visits the site their browser calls the rotate.php file and gets an image.  The browser then saves this image in the cache for later use.  The next time the page is visited it will receive a new image and overwrite the old one.  As far as the browser knows the file has simply changed.  Now when the browser visits again they have to download the header image again even it they already downloaded that same image once.  The header images can be quite large and even with broadband the lag retrieving the header image is noticeable.
+
+There is an alternative.  Instead of rotating the image that is sent why not rotate the URL that is called.  In other words instead of sending different images all from the rotate.php file have the browser retrieve image1.jpg then image2.jpg, etc.  There are a number of ways to accomplish this but if you are using  WordPress you can use the following instructions:
+<ol>
+	<li>Place all the headers you want to use in a single directory on your sever.  This is the only step that needs to be done through FTP.  The rest can be done using the WP theme editor.</li>
+	<li>Install and activate the <a href="http://www.coffee2code.com/archives/2004/07/08/plugin-random-file/">Random File WordPress plug-in</a>.</li>
+	<li>In the WP theme editor edit the Stylesheet file.  Remove the header image link from your CSS file if it is there.  This step is necessary because you cannot call PHP functions inside a CSS file.  Depending on what theme you are using the header section will look something like shown below.  If you don't find it in the CSS it may be that it is already in the header.
+<pre><code lang="css">#header {
+  background: #73a0c5 url('images/kubrickheader.jpg') no-repeat bottom center;
+}</code></pre>
+</li>
+	<li>Open your Header in your theme editor and find find the style section.  Either add or edit the header image css as shown below where [PATH TO IMAGES DIRECTORY] is the directory we setup in step 1.
+<pre><code lang="css">#header {
+  background: url(";") no-repeat bottom center;
+}</code></pre>
+</li>
+</ol>
+That's it.  The c2c_random_file function will return a random image URL each time.  Eventually visitors will have all images stored in their cache and the headers will not need to be downloaded each time.  Your visitors and your file server will thank you.

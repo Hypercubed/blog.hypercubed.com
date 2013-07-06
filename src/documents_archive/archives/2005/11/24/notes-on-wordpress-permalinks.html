@@ -1,0 +1,43 @@
+---
+title: "Notes on WordPress Permalinks"
+post_name: "notes-on-wordpress-permalinks"
+guid: 'http://blog.hypercubed.com/?p=123'
+status: "publish"
+date: '2005-11-24 10:04:24'
+post_id: '123'
+tags: [ 'WordPress' ]
+---
+<p>
+In the default WordPress installation links to single articles show up like http://www.yourblog.com/p=123.  This is called a <a href="http://codex.wordpress.org/Using_Permalinks">permalink</a>.
+A permalink (short for permanent link) is meant to be a fixed address
+where anyone can link to your articles even after the article has
+dropped from the front page. The default style shown above works fine
+for linking but is generally considered ugly and Goggle will often
+ignore URLs of this type. Luckily WordPress includes the ability to generate more friendly permalinks. When I first installed WordPress I
+discovered that this feature has issues on windows servers.&nbsp; </p><p>I
+soon become disturbed by the thought that my chosen deity Goggle may be
+neglecting my <s>prayers</s> posts so I did what any good Googleian would do.... I consulted Goggle.&nbsp;  I soon discovered <a href="http://support.jodohost.com/showthread.php?t=1665&amp;goto=nextoldest">a fix to my problem</a>.  Placing a php.ini file in my root directory with the following text:
+
+</p>
+<pre><code enc="true">cgi.fix_pathinfo = 1
+cgi.force_redirect = 0
+</code></pre>
+<p>This allows PHP to handle more complicated URLs. </p><p>&nbsp;<br />So the next step is to
+decide on the proper permalink structure to use. The default structure
+is /index.php/%year%/%monthnum%/%day%/%postname%/. That is the year,
+month, and day followed by the post name. That would make the link
+http://www.yourblog.com/p=123 show up as
+http://www.yourblog.com/2005/11/25/my-entry/. But once you pick a
+structure you don't want to change it. If someone links to a post and
+you change the permalink structure they will have a broken link. </p><p>So
+once again I searched Google and came across <a href="http://blog.taragana.com/index.php/archive/wordpress-tip-on-permalink-options/">a decent discussion on this topic</a>.
+The author of this blog suggest that having the date in the URL is
+redundant. And I agreed... at first. I was all ready to implement his
+suggested type of permalink when I realized something. WordPress allows
+you to view all posts within a certain month or year.&nbsp; For example
+by entering a URL like http://www.yourblog.com/2005/11/ you can view
+all posts in November 2005. Seems logical to me that if the full URL is
+http://www.yourblog.com/2005/11/25/my-entry/ the user can step up the
+URL to get all posts in the same day, month, or year. So in the end I'm
+going to use the default but at least now I have a logical reason for it and I can be happy with my decision.
+</p>

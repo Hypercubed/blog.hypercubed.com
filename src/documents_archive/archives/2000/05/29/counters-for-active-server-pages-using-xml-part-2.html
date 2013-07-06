@@ -1,0 +1,133 @@
+---
+title: "Counters for Active Server Pages using XML (part 2)"
+post_name: "counters-for-active-server-pages-using-xml-part-2"
+guid: 'http://blog.hypercubed.com/archives/2000/05/29/counters-for-active-server-pages-using-xml-part-2/'
+status: "publish"
+date: '2000-05-29 22:45:05'
+post_id: '206'
+tags: [ 'Web Programming' ]
+---
+In <a href="http://blog.hypercubed.com/archives/2000/05/29/counters-for-active-server-pages-using-xml-part-1/">Part 1</a> we looked at a method for storing page counts in an XML file. Here we look at diiferent ways to use a counter.
+<h2>Page Counter
+</h2> Using these functions to count how many times an ASP page is loaded is simple. Include the functions in your ASP page the include statement: 
+<pre><code lang="asp">&lt;!--#include file="counter.inc.asp"--&gt;
+</code></pre> Then you can increment the counter: 
+<pre><code lang="asp">&lt;% IncCounter "Page1" %&gt;
+</code></pre> The IncCounter function also returns the current count so to increment and display the current count: 
+<pre><code lang="asp">&lt;%= IncCounter("Page1") %&gt;
+</code></pre> Or to simply display the current count: 
+<pre><code lang="asp">&lt;%= GetCounter("Page1") %&gt;
+
+</code></pre> Or you can make a generic snippet of code to include on each page you wish to count: 
+<pre><code lang="asp">&lt;% Counter = Response.ServerVariables("SCRIPT_NAME")
+IncCounter Counter
+%&gt;
+</code></pre> This will create a counter with the file name of the script. 
+<h2>Session Counter
+</h2> What may be more useful to know is how many sessions have been established? This can be done through the global.asa file. Each time a new session is called the Session_OnStart subroutine is called. Just include the IncCounter code above (I don't think that the global.asa file can use sub functions): 
+<pre><code lang="asp">&lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;
+Sub Session_OnStart
+  Dim CountName
+  CountName = "sessions"
+  Dim rootNode
+  Dim Count
+  Dim Found	
+
+  Set xmlDOC = Server.CreateObject("Microsoft.XMLDOM")
+  xmlDOC.async = false
+  xmlDOC.load Server.MapPath("counts.xml")
+
+  Found = False
+  Count = 1
+
+  Set rootNode = xmlDOC.selectSingleNode("counts")
+  For Each Node in rootNode.selectNodes("count")
+	If Node.selectSingleNode("name").Text = CountName Then
+		Found = True
+		Exit For
+	End if
+  Next
+  If Not Found Then
+  	Set Node = rootNode.appendChild( _
+      rootNode.selectSingleNode("count").CloneNode(TRUE))
+	Node.selectSingleNode("name").Text = CountName
+  End If
+  Count = Count + 1
+  Node.selectSingleNode("count").Text = Count
+  xmlDOC.save xmlSRC
+
+End Sub
+&lt;/SCRIPT&gt;
+
+</code></pre> Then every time a new session is established the "sessions" count is incremented. 
+<h2>Image Counter
+</h2> Now what if you wish to count how many time an image is viewed? If the you have a page that resides on another server this is an easy way to count page hits. I'm sure many of you have seen this done before. The following text is saved in the file "counter.gif.asp": 
+<pre><code lang="asp">&lt;%
+   ' Clear out the existing HTTP header information
+   Response.Expires = 0
+   Response.Buffer = TRUE
+   %&gt;
+
+   &lt;!--#include file="counter.inc.asp"--&gt;
+
+   &lt;%
+   CounterName = Request.QueryString("cName")
+   IncCounter CounterName
+   Response.Clear
+	
+	Response.Redirect "counter.gif"
+% &gt;
+</code></pre> 
+<p>This ASP file first clears the HTTP header information so that the client doesn't think it is getting a text file, counter in incremented, and the browser is redirected to the counter.gif image file. 
+</p>
+<p>To use the IMG counter just include a img link in the page you wish to count: 
+</p>
+<pre><code lang="html">&lt;img src="counter.gif.asp?cName=CounterName"&gt;
+</code></pre> The "counter.gif.asp" file can be easily modified so that you can select the image file to be returned. 
+<h2>Link Counter
+</h2>
+<p>Now say you wished to count how many times a particular link is clicked. This can be done by linking to a page that uses the IncFunction to count (similar to the image counter) but then redirects the browser to a new URL, redirect.asp: 
+</p>
+<pre><code lang="asp">&lt;%
+
+   ' Clear out the existing HTTP header information
+   Response.Expires = 0
+   Response.Buffer = TRUE
+   %&gt;
+   &lt;!--#include file=" counter.inc.asp "--&gt;
+   &lt;%
+
+   URL = Request.QueryString("URL")
+   CounterName = Request.QueryString("cName")
+   IncCounter(CounterName)
+   Response.Redirect URL
+
+   %&gt;
+
+</code></pre> Then simply link with 
+<pre><code lang="html">&lt;a href="redirect.asp?cName=CounterName&amp;URL=page1.asp"&gt;
+</code></pre>
+<h2>Download Counter
+</h2> If you wish to count how many times a file is downloaded you can use the same "redirect.asp" file as above. However, you may wish to display a page while the file is downloading. You can include the following code in an asp file: 
+<pre><code lang="asp">&lt;!--#include file=" counter.inc.asp "--&gt;
+
+&lt;%
+   URL = Request.QueryString("URL")
+   CounterName = Request.QueryString("cName")
+   IncCounter(CounterName)
+%&gt;
+
+&lt;script language="JavaScript"&gt;
+&lt;!--
+var URL = "&lt;% =URL %&gt;";
+
+function beginDownload() {
+        window.location = URL;
+}
+ //--&gt;
+&lt;/script&gt;
+</code></pre>
+<p>Followed by the HTML you wish to display while the file is being downloaded. This can be a notice that the file is being downloaded or it can be instructions for installation. 
+</p>
+<p>This page uses JavaScript to redirect the client's browser rather then the Response.Redirect used in the previous examples.
+</p>

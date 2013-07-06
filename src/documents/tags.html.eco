@@ -2,6 +2,7 @@
 title: Tags
 layout: page
 pageOrder: 4
+icon: icon-tags
 ---
 
 <% tags = {} %>
@@ -16,8 +17,7 @@ pageOrder: 4
 	<% for tag, documents of tags: %>
 		<h4><a id="<%= tag %>"></a><%= tag.toLowerCase() %></h4>
 		<% for document in documents: %>
-			<li><span><%= @getFormattedDate(document.date) %></span>
-			&raquo;
+			<li>
 			<a href="<%= document.url %>"><%= document.title %></a></li>
 		<% end %>
 	<% end %>

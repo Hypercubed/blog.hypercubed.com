@@ -11,20 +11,11 @@ layout: default
     <% end %>
 <% end %>
 
-<div class="row">
-	<% if @next: %>
-		<a class="" href="<%= @next.url %>" class="next">«<%= @next.title %></a>
-	<% end %>
-	<% if @prev: %>
-		<a class="pull-right" href="<%= @prev.url %>" class="previous"><%= @prev.title %>»</a>
-	<% end %>
-</div>
-
 <article id="post" class="post">
 	<h2><%= @document.title %></h2>
 	<span class="meta">
 		<i class="icon-calendar"></i> <%= @getFormattedDate(@document.date) %>
-		<i class="icon-search"></i> 
+		<i class="icon-tag"></i> 
 		<span class="note-tags">
 			<% for tag in @document.tags: %>
 				<a href="/tags#<%= tag %>"><%= tag.toLowerCase() %></a>
@@ -33,6 +24,15 @@ layout: default
 	</span>
 	<div class="post-content"><%- @content %></div>
 </article>
+
+<div class="row">
+	<% if @next: %>
+		<a class="" href="<%= @next.url %>" class="next"><icon class="icon-chevron-sign-left"> <%= @next.title %></a>
+	<% end %>
+	<% if @prev: %>
+		<a class="pull-right" href="<%= @prev.url %>" class="previous"><%= @prev.title %> <icon class="icon-chevron-sign-right"></a>
+	<% end %>
+</div>
 
 <p class="post-footer meta">
 	Feedback?

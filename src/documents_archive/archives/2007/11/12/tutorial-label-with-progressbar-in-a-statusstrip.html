@@ -1,0 +1,139 @@
+---
+title: "Tutorial: Label with ProgressBar [in a StatusStrip] in Visual Basic"
+post_name: "tutorial-label-with-progressbar-in-a-statusstrip"
+guid: 'http://blog.hypercubed.com/archives/2007/11/10/tutorial-label-with-progressbar-in-a-statusstrip/'
+status: "publish"
+date: '2007-11-12 22:07:16'
+post_id: '345'
+tags: [ 'Programming' ]
+---
+<h3>Introduction
+</h3>
+<p><img style="border-width: 0px; margin: 5px 0px 5px 5px;" alt="image" src="http://blog.hypercubed.com/wp-content/uploads/2007/11/image4.png" align="right" border="0" height="56" width="145" />Recently I needed a very simple meter embedded into a <code>StatusStrip</code> like the one shown to the right. The <code>ToolStripProgressBar</code> included in Visual Studio 2005 can almost cut it but it does not have the capability to overlay text onto the bar. In this tutorial I walk you through creating a simple progress bar with text by inheriting from the <code>Label</code> control and overriding the <code>OnPaint</code> method. I will then extend this to a <code>StatusStripLabel</code> for addition to a <code>StatusStrip</code> container. I did this using Visual Basic but I'm sure this is easily translated to C#.&nbsp;
+<p /><!--more-->
+</p>
+<h3>Creating the class
+</h3>
+<p>Start by creating a new class within your project that inherits the label class:
+</p> 
+<pre><code lang="vbnet" >
+Public Class LabelWithBar
+    Inherits Label 
+
+End Class</code></pre>
+<p>
+</p>
+<p>
+</p>
+<p>By inheriting from the <code>Label</code> control we get all the standard <code>Label</code> methods and properties; for example <code>Text</code>, <code>TextAlign</code>, <code>ForeColor</code>, <code>BackColor</code>, <code>Font</code>. After you build your project you should see <code>LabelWithBar</code> appear in your Toolbox. This can be dragged and dropped onto your form and manipulated just like a <code>Label</code> control.
+</p>
+<p>Now add three properties: <code>Value</code>, <code>BarColor</code>, and <code>BarHeight</code>:
+</p> <pre><code lang="vbnet" >
+Public Property Value() As Integer
+    Get
+        Return mVal
+    End Get 
+ 
+    Set(ByVal Value As Integer) 
+ 
+        ' Make sure that the value does not stray outside the valid range.
+        Select Case Value
+            Case Is &lt; 0
+                mVal = 0
+            Case Is &gt; 100
+                mVal = 100
+            Case Else
+                mVal = Value
+        End Select 
+ 
+        ' Invalidate the control to get a repaint.
+        Me.Invalidate()
+    End Set
+End Property
+ 
+Public Property BarColor() As Color
+    Get
+        Return mbarColor
+    End Get
+ 
+    Set(ByVal Value As Color)
+        mbarColor = Value 
+ 
+        ' Invalidate the control to get a repaint.
+        Me.Invalidate()
+    End Set
+End Property
+ 
+Public Property BarHeight() As Integer
+    Get
+        Return mbarHeight
+    End Get
+    Set(ByVal value As Integer)
+        Select Case value
+            Case Is &gt; Me.Size.Height, Is &lt; 0
+                mbarHeight = Me.Size.Height
+            Case Else
+                mbarHeight = value
+        End Select
+ 
+        ' Invalidate the control to get a repaint.
+        Me.Invalidate()
+    End Set
+End Property
+</code></pre>
+<p>
+</p>
+<p>The <code>Value</code> property controls the length of the bar similar to the <code>Value</code> property of a <code>ProgressBar</code> . In my example I've limited the value to be an integer between 0 and 100 representing the percent filled. It is easy enough to extend this to use <code>Maximum</code> and <code>Minimum</code> properties like the <code>ProgressBar</code> but this will do for now. The <code>BarColor</code> property controls the bar's color while the <code>BarHeight</code> property controls the bar height or thickness. The <code>BarHeight</code> is forced to be some value less then the height of the label.
+</p>
+<p>Now we can draw the bar by overriding the <code>OnPaint</code> method:
+</p> <pre><code lang="vbnet">
+Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs) 
+
+    Dim g As Graphics = e.Graphics 
+
+    Dim percent As Decimal = mVal / 100
+    Dim brush As SolidBrush = New SolidBrush(BarColor)
+    Dim rect As Rectangle = e.ClipRectangle
+    Dim height As Integer = mbarHeight 
+
+    rect.Width = rect.Width * percent
+    If height = 0 Then height = rect.Height 
+
+    rect.Y = (rect.Height - height) / 2
+    rect.Height = height 
+
+    ' Draw bar
+    g.FillRectangle(brush, rect)
+    MyBase.OnPaint(e) 
+
+End Sub 
+</code></pre>
+<p>
+</p>
+<p>This function first draws a bar with the specified color, height, and width then calls the <code>Label</code>'s native <code>OnPaint</code> method to draw the text. Note that if <code>BarHeight</code> is set to 0 the bar defaults to the <code>Label</code>'s height.
+</p>
+<p>That is really all you need to be on your way. You can now edit the controls <code>Value</code>, <code>BarColor</code>, and <code>BarHeight</code> properties at design time in Visual Studio's properties window or at runtime in your code.
+</p>
+<p>To improve the custom control it is desirable to tell Visual Studio what the default values are for each property. Do this by adding the default values to each class using the <code>DefaultValue</code> attribute. For the <code>Value</code> and <code>BarHeight</code> properties this means adding <code lang="vbnet">&lt;DefaultValue(0)&gt; _</code> on the line just preceding the property declaration. For the <code>BarColor</code> property we need to do a little casting with <code lang="vbnet">&lt;DefaultValue(GetType(Color), "Blue")&gt; _</code> . You many need to import <code>System.ComponentModel</code> if your project doesn't do so already.&nbsp;
+</p>
+<p>Now the final step is creating a version capable of being added to the a <code>StatusStrip</code> control. All you have to do is repeat the steps above but instead of inheriting from the <code>Label</code> class you inherit from the <code>ToolStripStatusLabel</code> class:
+</p> <pre><code lang="vbnet" >
+&lt;System.ComponentModel.DesignerCategory(&quot;code&quot;)&gt; _
+&lt;ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.StatusStrip)&gt; _
+Public Class ToolStripStatusLabelWithBar
+    Inherits ToolStripStatusLabel 
+ 
+End Class
+</code></pre>
+<p>The attributes preceding the class instruct visual studio that this class can be embedded in a <code>StatusStrip</code> . Now copy and paste all the code from the the <code>LabelWithBar</code> class to this class, rebuild, and you can now add a <code>ToolStripStatusLabelWithBar</code> control to your <code>StatusStrip</code> control.
+</p>
+<p>The complete code can be <a href="http://blog.hypercubed.com/wp-content/uploads/2007/11/labelwithbar.vb" title="LabelWithBar Code">downloaded here</a>.
+</p>
+<h3>Lessons Learned
+</h3>
+<p>While I have created a few custom controls in the past this was my first time delving deeply into the design time attributes. A lot of this was my first time experimenting with design time attributes. Overall this project would have taken less than a day if it wasn't for the following false starts.
+</p>
+<p>In my first attempt at creating the <code>LabelWithBar</code> class I tried to inherit from the <code>ProgressBar</code> control and paint the text on top. I soon found that handling the text alignment, fonts, etc was more difficult than adding a simple bar. In the end it turned out much easier to inherit from the label control and painting a simple rectangle.
+</p>
+<p>In my first attempt at creating the <code>ToolStripStatusLabelWithBar</code> class I tried to inherit from the <code>ToolStripControlHost</code> and add the previously created <code>LabelWithBar</code> class as the embedded control. This proved to be much more difficult then necessary. I struggled for nearly a day trying to get the control to keep the <code>Size</code> and <code>TextAlign</code> properties that were being set at design time. I never could get it to work properly. I suspect that behind the scenes <code>ToolStripControlHost</code> was trying to manage the <code>Size</code> and <code>TextAlign</code> between itself and the <code>LabelWithBar</code> interfering with my efforts to do so. In the end it was much easier to simply cut and paste the properties from the <code>LabelWithBar</code> class into the <code>ToolStripStatusLabelWithBar</code> as shown above.
+</p>
