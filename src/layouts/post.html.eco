@@ -11,6 +11,15 @@ layout: default
     <% end %>
 <% end %>
 
+<div class="row">
+	<% if @next: %>
+		<a class="" href="<%= @next.url %>" class="next"><icon class="icon-chevron-sign-left"></icon> <%= @next.title %></a>
+	<% end %>
+	<% if @prev: %>
+		<a class="pull-right" href="<%= @prev.url %>" class="previous"><%= @prev.title %> <icon class="icon-chevron-sign-right"></icon></a>
+	<% end %>
+</div>
+
 <article id="post" class="post">
 	<h2><%= @document.title %></h2>
 	<span class="meta">
@@ -24,15 +33,6 @@ layout: default
 	</span>
 	<div class="post-content"><%- @content %></div>
 </article>
-
-<div class="row">
-	<% if @next: %>
-		<a class="" href="<%= @next.url %>" class="next"><icon class="icon-chevron-sign-left"> <%= @next.title %></a>
-	<% end %>
-	<% if @prev: %>
-		<a class="pull-right" href="<%= @prev.url %>" class="previous"><%= @prev.title %> <icon class="icon-chevron-sign-right"></a>
-	<% end %>
-</div>
 
 <p class="post-footer meta">
 	Feedback?

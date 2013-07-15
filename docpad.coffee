@@ -106,7 +106,7 @@ docpadConfig = {
 			database.findAllLive({pageOrder: $exists: true}, [pageOrder:1,title:1])
             
 		posts: (database) ->
-			database.findAllLive({status:$has:'publish'}, [date:-1]).on "add", (model) ->
+			database.findAllLive({status:{$has:'publish'},tags:{$nin:['Links']}}, [date:-1]).on "add", (model) ->
 				model.setMetaDefaults({layout: "post", standalone: true})
 
 	# =================================
