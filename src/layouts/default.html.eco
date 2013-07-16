@@ -40,14 +40,15 @@
 	<!-- Markup -->
 	<div id="container" class="container">
 
-		<div id="header-image" class="header" >
-			<h1><%= @site.title || "Welcome" %></h1>
+		<div id="header-image" class="page-header" >
+			<h1><%= @site.title || "Welcome" %>
+			<br /><small>Now Live from Tokyo</small></h1>
 		</div>
 		
-		<div class="navbar navbar-fixed-top">
+		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href="/">Home</a>
+					<a class="brand" href="/"><i class="icon-home"></i></a>
 					<ul class="nav">
 						<% for document in @getCollection('pages').toJSON(): %>
 							<li typeof="sioc:Page" about="<%= document.url %>" class="<%= 'active'  if @document.url is document.url %>">
@@ -55,11 +56,15 @@
 							</li>
 						<% end %>
 					</ul>
+					<ul class="nav pull-right">
+			          <li><a class="brand" href="/feed/"><i class="icon-rss"></i> </a></li>
+			          <li></li>
+			        </ul>
 				</div>
 			</div>
 		</div>
 		
-		<div class="social"><div class="container"></div></div>
+		<!-- div class="social"><div class="container"></div></div -->
 		
 		<section id="content" class="content">
 			<%- @content %>
@@ -68,12 +73,14 @@
 
 	</div><!-- /container -->
 	
+	<div class="container">
 		<footer class="footer">
 			<p class="pull-left">Copyright &copy; <%- (new Date()).getFullYear() %> - <%= @site.author %> - Powered by <a href="http://docpad.org/">Docpad</a></p>
 			<p class="pull-right">
-				This website was last updated at <%= @getFormattedDate(@site.date) %>
+				Last updated <%= @getFormattedDate(@site.date) %>
 			</p>
 		</footer>
+	</div>
 		
 	<!-- Scripts -->
 	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>

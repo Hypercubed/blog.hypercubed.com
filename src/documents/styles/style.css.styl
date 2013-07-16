@@ -9,44 +9,52 @@ a, a:link
 	cursor pointer
 	
 html
-	margin-top: 30px;
 	body
-		background-color: #fff;
+		background-color: #eee;
+
+@media (min-width: 1200px) html 
+	margin-top: 30px;
 	
 .affix
 	top: 10px
 	
+#container
+	background-color: #fff;
+	padding: 0
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	.row
+		margin-left: 0px
 
 #header-image
-	margin-bottom: 0;
+	margin: 0;
 	background-image: url('/images/4.jpg');
 	background-size: cover;
 	text-align: center;
 	height: 200px;
+	background-color: #f5f5f5;
 	h1
 		margin-top: 0;
 		padding-top: 20px;
 		color: #fff;
 		text-shadow: 2px 2px 2px #333333;
+
+.content
+	padding: 20px;
 		
 .navbar
 	margin-bottom: 0px;
-	
+
+.navbar .nav.pull-right
+	margin-right: 20px;
+
 .social
 	padding: 15px 0;
 	text-align: center;
 	background-color: #f5f5f5;
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #ddd;
-
-#container
-	background-color: #fff;
-	padding: 10px 15px 10px 15px
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	.row
-		margin-left: 0px
 
 .post, article
 	line-height: 1.6em;
@@ -78,8 +86,4 @@ section#related, section#feedback
 	background-color: #FAFAFA;
 	
 footer.footer
-	border-top: 1px solid #E5E5E5;
-	border-bottom: 1px solid #E5E5E5;
-	background-color: #FAFAFA;
-	margin-top: 45px;
 	padding: 15px 15px 36px 15px;

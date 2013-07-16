@@ -15,7 +15,7 @@ icon: icon-tags
 
 <nav class="linklist">
 	<% for tag, documents of tags: %>
-		<h4><a id="<%= tag %>"></a><%= tag.toLowerCase() %></h4>
+		<h4><a id="<%= tag %>"></a><%= tag %></h4>
 		<% for document in documents: %>
 			<li>
 			<a href="<%= document.url %>"><%= document.title %></a></li>

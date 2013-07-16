@@ -11,14 +11,18 @@ layout: default
     <% end %>
 <% end %>
 
-<div class="row">
-	<% if @next: %>
-		<a class="" href="<%= @next.url %>" class="next"><icon class="icon-chevron-sign-left"></icon> <%= @next.title %></a>
-	<% end %>
-	<% if @prev: %>
-		<a class="pull-right" href="<%= @prev.url %>" class="previous"><%= @prev.title %> <icon class="icon-chevron-sign-right"></icon></a>
-	<% end %>
-</div>
+<ul class="pager">
+  <% if @prev: %>
+  <li class="previous">
+    <a href="<%= @prev.url %>" class="previous"><icon class="icon-chevron-sign-left"></icon> Older</a>
+  </li>
+  <% end %>
+  <% if @next: %>
+  <li class="next">
+    <a href="<%= @next.url %>" class="next"><icon class="icon-chevron-sign-right"></icon> Newer</a>
+  </li>
+  <% end %>
+</ul>
 
 <article id="post" class="post">
 	<h2><%= @document.title %></h2>
@@ -27,31 +31,32 @@ layout: default
 		<i class="icon-tag"></i> 
 		<span class="note-tags">
 			<% for tag in @document.tags: %>
-				<a href="/tags#<%= tag %>"><%= tag.toLowerCase() %></a>
+				<a href="/tags#<%= tag %>"><%= tag %></a>
 			<% end %>
 		</span>
 	</span>
 	<div class="post-content"><%- @content %></div>
 </article>
 
-<p class="post-footer meta">
-	Feedback?
-	<br />You can <a href="#disqus">leave a response</a>.
-	<br /><a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>">
-			Edit and improve this page via GitHub!
-		  </a>
-</p>
+<section class="well small">
+	<small>
+		<!-- Share -->
+		<!-- @getSocialButtons() -->
+		Feedback?
+		<br />You can <a href="#disqus">leave a response</a>.
+		<br /><a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>">
+				Edit and improve this page via GitHub!
+			  </a>
+    </small>
+</section>
 
-<!-- Share -->
-<!-- @getSocialButtons() -->
-
-<section id="feedback">
+<section id="feedback" class="well">
 	<a id="disqus"></a>
 	<%- @getDisqus() %>
 </section>
 
 <% if  @document.relatedDocuments and @document.relatedDocuments.length: %>
-<section id="related">
+<section id="related" class="well small">
 	<a id="related"></a><h4>Related Posts</h4>
 	<nav class="linklist">
 		<% for document in @document.relatedDocuments.slice(0,5): %>

@@ -6,6 +6,8 @@ pagedCollection: 'posts'
 pageSize: 3
 ---
 
+
+
 <div class="">
 	<nav class="linklist">
 		<% for document in @getCollection('posts').toJSON()[@document.page.startIdx...@document.page.endIdx]: %>
@@ -26,16 +28,19 @@ pageSize: 3
 	</nav>
 </div>
 
-<!-- Page Listing -->
-<div class="row">
-	<% if @hasPrevPage(): %>
+<ul class="pager">
+  <% if @hasPrevPage(): %>
+  <li class="previous">
 		<% if @document.page.number > 1: %>
 			<a class="" href="<%= '/index.'+(@document.page.number-1)+'.html' %>" class="next"><icon class="icon-chevron-sign-left"> newer</a>
 		<% else: %>
 			<a class="" href="<%= '/' %>" class="next"><icon class="icon-chevron-sign-left"> newer</a>
 		<% end %>
-	<% end %>
-	<% if @hasNextPage(): %>
+  </li>
+  <% end %>
+  <% if @hasNextPage(): %>
+  <li class="next">
 		<a class="pull-right" href="<%= '/index.'+(@document.page.number+1)+'.html' %>" class="previous">older <icon class="icon-chevron-sign-right"></a>
-	<% end %>
-</div>
+  </li>
+  <% end %>
+</ul>
