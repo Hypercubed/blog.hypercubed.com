@@ -1,0 +1,22 @@
+---
+title: Links
+layout: page
+pageOrder: 5
+icon: icon-external-link
+---
+
+<nav class="linklist">
+	<% for document,index in @getCollection('links').toJSON(): %>
+		<% year = @getFormattedDate(document.date, "YYYY") %>
+		<% month = @getFormattedDate(document.date, "MMM") %>
+		<% if (index == 0 || year != lastYear): %>
+			<h3><%= lastYear = year %></h3>
+		<% end %>
+		<% if (index == 0 || year != lastYear || month != lastMonth): %>
+			<h5><%= lastMonth = month %></h5>
+		<% end %>
+		<li>
+			<a href="<%= document.url %>"><%= document.title %></a>
+		</li>
+	<% end %>
+</nav>

@@ -4,14 +4,6 @@ moment = require 'moment'
 # It is simply a CoffeeScript Object which is parsed by CSON
 docpadConfig = {
 
-	# Documents Paths
-	# An array of paths which contents will be treated as documents
-	# If it is a relative path, it will have the resolved `srcPath` prepended to it
-	documentsPaths: [
-		'documents',
-		'documents_archive'
-	]
-
 	# =================================
 	# Template Data
 	# These are variables that will be accessible via our templates
@@ -52,8 +44,7 @@ docpadConfig = {
 			# Styles
 			styles: [
 				"/styles/twitter-bootstrap.css"
-				"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
-				"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+				"/vendor/font-awesome/css/font-awesome.min.css"
 				"/styles/tomorrow-night-eighties.css"
 				"/styles/style.css"
 			]
@@ -74,19 +65,19 @@ docpadConfig = {
 		# Helper Functions
 
 		# Get the prepared site/document title
-		# Often we would like to specify particular formatting to our page's title
+		# Often we would like to specify particular formatting to our pages title
 		# we can apply that formatting here
 		getPreparedTitle: ->
-			# if we have a document title, then we should use that and suffix the site's title onto it
+			# if we have a document title, then we should use that and suffix the sites title onto it
 			if @document.title
 				"#{@document.title} | #{@site.title}"
-			# if our document does not have it's own title, then we should just use the site's title
+			# if our document does not have its own title, then we should just use the sites title
 			else
 				@site.title
 
 		# Get the prepared site/document description
 		getPreparedDescription: ->
-			# if we have a document description, then we should use that, otherwise use the site's description
+			# if we have a document description, then we should use that, otherwise use the sites description
 			@document.description or @site.description
 
 		# Get the prepared site/document keywords
@@ -109,6 +100,10 @@ docpadConfig = {
 			database.findAllLive({status:{$has:'publish'},tags:{$nin:['Links']}}, [date:-1]).on "add", (model) ->
 				model.setMetaDefaults({layout: "post", standalone: true})
 
+		links: (database) ->
+			database.findAllLive({status:{$has:'publish'},tags:{$in:['Links']}}, [date:-1]).on "add", (model) ->
+				model.setMetaDefaults({layout: "post", standalone: true})
+
 	# =================================
 	# Plugins
 
@@ -117,8 +112,14 @@ docpadConfig = {
 			downloads: [
 				{
 					name: 'Twitter Bootstrap'
-					path: 'src/files/vendor/twitter-bootstrap'
-					url: 'https://nodeload.github.com/twitter/bootstrap/tar.gz/master'
+					path: 'src/raw/vendor/twitter-bootstrap'
+					url: 'https://codeload.github.com/twitter/bootstrap/tar.gz/master'
+					tarExtractClean: true
+				},
+				{
+					name: 'Font Awesome'
+					path: 'src/raw/vendor/font-awesome'
+					url: 'https://codeload.github.com/FortAwesome/Font-Awesome/tar.gz/master'
 					tarExtractClean: true
 				}
 			]
@@ -160,7 +161,8 @@ docpadConfig = {
 						googleAnalytics: false
 					url:
 						'http://localhost:9778'
-			documentsPaths: [ 'documents' ]
+			ignoreCustomPatterns: /2010|2009|2008|2007|2006|2005|2000/
+			#ignoreCustomPatterns: /2005/
 
 }
 

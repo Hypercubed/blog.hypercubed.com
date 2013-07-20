@@ -34,21 +34,13 @@ layout: default
 				<a href="/tags#<%= tag %>"><%= tag %></a>
 			<% end %>
 		</span>
+		<div class="pull-right">
+			<a href="#disqus"><i class="icon-comment"></i></a> 
+			<a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>"><i class="icon-edit-sign"></i></a>
+		</div>
 	</span>
 	<div class="post-content"><%- @content %></div>
 </article>
-
-<section class="well small">
-	<small>
-		<!-- Share -->
-		<!-- @getSocialButtons() -->
-		Feedback?
-		<br />You can <a href="#disqus">leave a response</a>.
-		<br /><a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>">
-				Edit and improve this page via GitHub!
-			  </a>
-    </small>
-</section>
 
 <section id="feedback" class="well">
 	<a id="disqus"></a>

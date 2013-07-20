@@ -1,13 +1,13 @@
 - [ ] Copy http://blog.hypercubed.com/wp-content/
 - [ ] Copy http://www.hypercubed.com/assets/files/
-- [ ] Search and replace these links
+- [ ] Search and replace these links?
 - [ ] Check links
 - [ ] Seperate archives for each tags?
-- [ ] Seperate archive for links
+- [x] Seperate archive for links
 - [ ] Images in /archives/2006/08/09/hotlinking-update
 - [ ] Internal links?
 - [ ] Normalize tags
-- [ ] Links index?
+- [x] Links index?
 - [ ] 2005
 - [ ] /archives/2005/06/23/spell-with-flickr
 - [ ] archives/2005/06/15/in-memory-of-dr-yian-chang
@@ -18,3 +18,7 @@
 - [ ] /archives/2005/04/01/hypercubed
 - [ ] /archives/2011/05/22/japan-aprilmay-2011 images
 - [ ] Fix disqus ids... agian.
+- [ ] Fix serche button
+- [ ] Finish about page
+- [ ] Update guid
+- [ ] Fork docpad-plugin-services
