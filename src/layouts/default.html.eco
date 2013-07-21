@@ -45,7 +45,7 @@
 			<br /><small>Now Live from Tokyo</small></h1>
 		</div>
 		
-		<div class="navbar navbar-static-top">
+		<div class="navbar navbar-static-top" data-spy="affix" data-offset-top="210">
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href="/"><i class="icon-home"></i></a>

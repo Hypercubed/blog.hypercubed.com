@@ -22,3 +22,5 @@
 - [ ] Finish about page
 - [ ] Update guid
 - [ ] Fork docpad-plugin-services
+- [ ] Fix title affix background
+- [ ] Fix header image
