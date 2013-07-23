@@ -1,14 +1,14 @@
+# Required
+
 - [ ] Copy http://blog.hypercubed.com/wp-content/
-- [ ] Copy http://www.hypercubed.com/assets/files/
-- [ ] Search and replace these links?
-- [ ] Check links
-- [ ] Seperate archives for each tags?
-- [x] Seperate archive for links
-- [ ] Images in /archives/2006/08/09/hotlinking-update
-- [ ] Internal links?
-- [ ] Normalize tags
-- [x] Links index?
-- [ ] 2005
+- [ ] Images in /archives/
+- [ ] Fix search button
+- [ ] Finish about page
+- [ ] Quick check of links
+- [ ] Deploy script
+
+# Posts with issues
+
 - [ ] /archives/2005/06/23/spell-with-flickr
 - [ ] archives/2005/06/15/in-memory-of-dr-yian-chang
 - [ ] /archives/2005/06/04/testing-blogjet
@@ -17,10 +17,18 @@
 - [ ] /archives/2005/04/03/the-results-of-my-research
 - [ ] /archives/2005/04/01/hypercubed
 - [ ] /archives/2011/05/22/japan-aprilmay-2011 images
-- [ ] Fix disqus ids... agian.
-- [ ] Fix serche button
-- [ ] Finish about page
-- [ ] Update guid
-- [ ] Fork docpad-plugin-services
-- [ ] Fix title affix background
-- [ ] Fix header image
+
+# Others
+
+- [ ] Copy http://www.hypercubed.com/assets/files/
+- [ ] Search and replace these links?
+- [ ] Check links
+- [-] Separate archives for each tags?
+- [x] Separate archive for links
+- [x] Normalize tags
+- [x] Links index?
+- [ ] Permanent fix for disqus ids.
+	- [ ] Update guid
+	- [ ] Fork docpad-plugin-services
+- [x] Fix title affix background
+- [ ] Fix header image?

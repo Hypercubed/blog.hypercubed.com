@@ -24,44 +24,57 @@ layout: default
   <% end %>
 </ul>
 
+
+
 <article id="post" class="post">
-	<div id="post-title" data-spy="affix" data-offset-top="300">
-		<div class="container">
-			<h2><%= @document.title %></h2>
+
+	<div id="post-header" class="container">
+
+		<div id="post-title" class="container" data-spy="affix" data-offset-top="300">
+			<div >
+				<h2><%= @document.title %></h2>
+			</div>
 		</div>
-	</div>
 
-	<div id="post-meta" data-spy="affix" data-offset-top="300">
-		<div class="container">
-			<span class="meta">
-				<i class="icon-calendar"></i> <%= @getFormattedDate(@document.date) %>
-				<i class="icon-tag"></i> 
-				<span class="note-tags">
-					<% for tag in @document.tags: %>
-						<a href="/tags#<%= tag %>"><%= tag %></a>
-					<% end %>
-				</span>
-				<!-- div class="pull-right" -->
+		<div id="post-meta" data-spy="affix" data-offset-top="300">
+			<div class="container">
+				<span class="meta">
+					<i class="icon-calendar"></i> <%= @getFormattedDate(@document.date) %>
+					<i class="icon-tag"></i> 
+					<span class="note-tags">
+						<% for tag in @document.tags: %>
+							<a href="/tags#<%= tag %>"><%= tag %></a>
+						<% end %>
+					</span>
+					
+					<div class="pull-right">
 
-					<!-- AddThis Button BEGIN -->
-					<div class=" pull-right addthis_toolbox addthis_default_style addthis_16x16_style">
-			
+						<!-- AddThis Button BEGIN -->
+						<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+							<a class="addthis_button_facebook"></a>
+							<a class="addthis_button_twitter"></a>
+							<a class="addthis_button_google_plusone_share"></a>
+							<a class="addthis_button_compact"></a>
+						</div>
+						<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d7d2c304f14575d"></script>
+						<!-- AddThis Button END -->
 						
-						<a class="addthis_button_facebook"></a>
-						<a class="addthis_button_twitter"></a>
-						<a class="addthis_button_google_plusone_share"></a>
-						<a class="addthis_button_compact"></a>
-
-						<a href="#disqus"><i class="icon-comment"></i></a> 
-						<a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>"><i class="icon-edit-sign"></i></a> 			
 					</div>
-					<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d7d2c304f14575d"></script>
-					<!-- AddThis Button END -->
-				<!-- /div -->
-			</span>
+
+					<div class="pull-right">
+							<a href="#disqus"><i class="icon-comment"></i></a> 
+							<a href="https://github.com/Hypercubed/blog.hypercubed.com/edit/master/src/documents/<%- @document.relativePath %>"><i class="icon-edit-sign"></i></a> 
+					</div>
+
+
+				</span>
+			</div>
 		</div>
+
 	</div>
+
+
 
 	<div class="post-content"><%- @content %></div>
 </article>
