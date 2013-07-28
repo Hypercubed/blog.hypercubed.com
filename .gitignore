@@ -1,3 +1,5 @@
 node_modules/
 out/
 src/raw/vendor/
+.env
+src/media/

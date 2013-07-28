@@ -1,11 +1,11 @@
 # Required
 
-- [ ] Copy http://blog.hypercubed.com/wp-content/
-- [ ] Images in /archives/
+- [x] Copy http://blog.hypercubed.com/wp-content/
+- [x] Images in /archives/
 - [ ] Fix search button
 - [ ] Finish about page
 - [ ] Quick check of links
-- [ ] Deploy script
+- [x] Deploy script
 
 # Posts with issues
 

@@ -46,7 +46,7 @@ layout: default
 							<a href="/tags#<%= tag %>"><%= tag %></a>
 						<% end %>
 					</span>
-					
+
 					<div class="pull-right">
 
 						<!-- AddThis Button BEGIN -->
@@ -73,8 +73,6 @@ layout: default
 		</div>
 
 	</div>
-
-
 
 	<div class="post-content"><%- @content %></div>
 </article>
