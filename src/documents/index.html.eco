@@ -4,22 +4,27 @@ title: 'Home'
 isPaged: false
 ---
 
-<div class="">
-	<nav class="linklist">
-		<% for document in @getCollection('posts').toJSON().splice(0,5): %>
-			<article id="post" class="post">
-				<h2><a href="<%= document.url %>"><%= document.title %></a></h2>
-				<span class="meta">
-					<i class="icon-calendar"></i> <%= @getFormattedDate(document.date) %> 
-					<i class="icon-tag"></i> 
-					<span class="note-tags">
-						<% for tag in document.tags: %>
-							<a href="/tags#<%= tag %>"><%= tag %></a>
-						<% end %>
-					</span>
-				</span>
-				<div class="post-content"><%- document.contentRenderedWithoutLayouts %></div>
-			</article>
-		<% end %>
-	</nav>
-</div>
+<h1>Jayson Harshbarger</h1>
+pitch
+
+<h2>Profiles</h2>
+<nav class="linklist">
+<li><a href="http://plus.google.com/106434515597889238357/">google plus</a></li>
+<li><a href="http://github.com/Hypercubed/">github</a></li>
+<li><a href="http://www.linkedin.com/in/hypercubed">linkedin</a></li>
+<li><a href="http://500px.com/hypercubed">500px</a></li>
+</nav>
+
+<h2>Projects</h2>
+<nav class="linklist">
+<li><a href="http://photos.hypercubed.com/">photos.hypercubed.com</a></li>
+<li><a href="http://github.com/Hypercubed/">github</a></li>
+</nav>
+
+<h2>Blog Posts</h2>
+<nav class="linklist">
+	<% for document in @getCollection('posts').toJSON().splice(0,5): %>
+		<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
+	<% end %>
+</nav>
+

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<% collection = @getCollection('posts').toJSON() %>
+<% collection = @getCollection(@document.collection || 'posts').toJSON() %>
 <% for document,documentIndex in collection: %>
     <% if @document.id is document.id: %>
 		<% @index = documentIndex %>

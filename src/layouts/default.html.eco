@@ -41,7 +41,7 @@
 	<div class="container">
 	<div id="header-image" class="page-header container">
 		<div class="container">
-			<h1><%= @site.title || "Welcome" %>
+			<h1>Hypercubed
 			<br /><small>Now Live from Tokyo</small></h1>
 		</div>
 	</div>

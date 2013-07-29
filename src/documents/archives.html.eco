@@ -12,11 +12,6 @@ icon: icon-calendar
 		<% if (index == 0 || year != lastYear): %>
 			<h3><%= lastYear = year %></h3>
 		<% end %>
-		<% if (index == 0 || year != lastYear || month != lastMonth): %>
-			<h5><%= lastMonth = month %></h5>
-		<% end %>
-		<li>
-			<a href="<%= document.url %>"><%= document.title %></a>
-		</li>
+		<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
 	<% end %>
 </nav>

@@ -86,7 +86,7 @@ docpadConfig = {
 			@site.keywords.concat(@document.keywords or []).join(', ')
 		
 		getFormattedDate: (date, format) ->
-			moment(date || @document.date).format(format || "MMM Do YYYY")
+			moment(date || @document.date).format(format || "MMM DD YYYY")
 
 	# =================================
 	# Collections
@@ -98,11 +98,11 @@ docpadConfig = {
             
 		posts: (database) ->
 			database.findAllLive({status:{$has:'publish'},tags:{$nin:['Links']}}, [date:-1]).on "add", (model) ->
-				model.setMetaDefaults({layout: "post", standalone: true})
+				model.setMetaDefaults({layout: "post", standalone: true, collection: 'posts'})
 
 		links: (database) ->
 			database.findAllLive({status:{$has:'publish'},tags:{$in:['Links']}}, [date:-1]).on "add", (model) ->
-				model.setMetaDefaults({layout: "post", standalone: true})
+				model.setMetaDefaults({layout: "post", standalone: true, collection: 'links'})
 
 	# =================================
 	# Plugins

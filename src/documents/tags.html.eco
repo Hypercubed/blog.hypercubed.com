@@ -17,8 +17,7 @@ icon: icon-tags
 	<% for tag, documents of tags: %>
 		<h4><a id="<%= tag %>"></a><%= tag %></h4>
 		<% for document in documents: %>
-			<li>
-			<a href="<%= document.url %>"><%= document.title %></a></li>
+			<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
 		<% end %>
 	<% end %>
 </nav>
