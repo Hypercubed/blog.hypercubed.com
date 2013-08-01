@@ -4,27 +4,46 @@ title: 'Home'
 isPaged: false
 ---
 
-<h1>Jayson Harshbarger</h1>
-pitch
+<section class="hero">
 
-<h2>Profiles</h2>
-<nav class="linklist">
-<li><a href="http://plus.google.com/106434515597889238357/">google plus</a></li>
-<li><a href="http://github.com/Hypercubed/">github</a></li>
-<li><a href="http://www.linkedin.com/in/hypercubed">linkedin</a></li>
-<li><a href="http://500px.com/hypercubed">500px</a></li>
-</nav>
+	<h2>My name is Jayson Harshbarger.  I like to use the pseudonym hypercubed.</h2>
 
-<h2>Projects</h2>
-<nav class="linklist">
-<li><a href="http://photos.hypercubed.com/">photos.hypercubed.com</a></li>
-<li><a href="http://github.com/Hypercubed/">github</a></li>
-</nav>
+	<ul class="nav nav-pills">
+		<li><a href="http://plus.google.com/106434515597889238357/"><i class="icon-google-plus-sign"></i> </a></li>
+		<li><a href="http://www.facebook.com/hypercubed"><i class="icon-facebook-sign"></i> </a></li>
+		<li><a href="http://www.linkedin.com/in/hypercubed"><i class="icon-linkedin-sign"></i> </a></li>
+		<li><a href="http://www.twitter.com/hypercubed"><i class="icon-twitter-sign"></i></a> </li>
+	</ul>
+	
+</section>
 
-<h2>Blog Posts</h2>
-<nav class="linklist">
-	<% for document in @getCollection('posts').toJSON().splice(0,5): %>
-		<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
-	<% end %>
-</nav>
+<section class="hero hero-white">
+	<h2>I like to program.</h2>
+
+	<ul class="nav nav-pills">
+		<li><a href="http://github.com/Hypercubed/"><i class="icon-github-sign"></i> </a></li>
+	</ul>
+</section>
+
+<section class="hero">
+	<h2>I like to take photographs.</h2>
+
+	<ul class="nav nav-pills">
+		<li><a href="http://photos.hypercubed.com/">photos.hypercubed.com</a></li>
+		<li><a href="http://500px.com/hypercubed">∞</a></li>
+		<li><a href="http://flickr.com/hypercubed"><i class="icon-flickr"></i></a></li>
+	</ul>
+</section>
+
+<section class="hero hero-white">
+
+	<h2>I sometimes blog.</h2>
+	<ul class="linklist">
+		<% for document in @getCollection('posts').toJSON().splice(0,5): %>
+			<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
+		<% end %>
+		<li><a href="/archives/">Archives</a></li>
+	</ul>
+
+</section>
 

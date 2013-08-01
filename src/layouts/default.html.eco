@@ -38,11 +38,10 @@
 </head>
 <body>
 	<!-- Markup -->
-	<div class="container">
-	<div id="header-image" class="page-header container">
-		<div class="container">
-			<h1>Hypercubed
-			<br /><small>Now Live from Tokyo</small></h1>
+	<div class="_container" >
+	<div id="header-image" class="page-header _container">
+		<div class="_container">
+			<h1><a href="<%= @site.url %>">Hypercubed</a></h1>
 		</div>
 	</div>
 	</div>
@@ -52,7 +51,7 @@
 		<div id="main-nav" class="navbar navbar-static-top" data-spy="affix" data-offset-top="200">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href="/"><i class="icon-home"></i></a>
+					<a class="brand" href="<%= @site.url %>"><i class="icon-home"></i></a>
 					<ul class="nav">
 						<% for document in @getCollection('pages').toJSON(): %>
 							<li typeof="sioc:Page" about="<%= document.url %>" class="<%= 'active'  if @document.url is document.url %>">

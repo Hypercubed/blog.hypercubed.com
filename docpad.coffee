@@ -23,7 +23,7 @@ docpadConfig = {
 			]
 
 			# The default title of our website
-			title: "Hypercubed Blog"
+			title: "Hypercubed"
 
 			# The website description (for SEO)
 			description: """
@@ -43,8 +43,8 @@ docpadConfig = {
 
 			# Styles
 			styles: [
-				"/styles/twitter-bootstrap.css"
-				"/vendor/font-awesome/css/font-awesome.min.css"
+				"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+				"//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 				"/styles/tomorrow-night-eighties.css"
 				"/styles/style.css"
 			]
