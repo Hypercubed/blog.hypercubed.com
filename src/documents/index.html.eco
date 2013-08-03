@@ -4,46 +4,65 @@ title: 'Home'
 isPaged: false
 ---
 
-<section class="hero">
+<section class="row col section">
 
-	<h2>My name is Jayson Harshbarger.  I like to use the pseudonym hypercubed.</h2>
-
-	<ul class="nav nav-pills">
-		<li><a href="http://plus.google.com/106434515597889238357/"><i class="icon-google-plus-sign"></i> </a></li>
-		<li><a href="http://www.facebook.com/hypercubed"><i class="icon-facebook-sign"></i> </a></li>
-		<li><a href="http://www.linkedin.com/in/hypercubed"><i class="icon-linkedin-sign"></i> </a></li>
-		<li><a href="http://www.twitter.com/hypercubed"><i class="icon-twitter-sign"></i></a> </li>
-	</ul>
+	My name is Jayson Harshbarger.
 	
 </section>
 
-<section class="hero hero-white">
-	<h2>I like to program.</h2>
+<hr class="soften" />
 
-	<ul class="nav nav-pills">
-		<li><a href="http://github.com/Hypercubed/"><i class="icon-github-sign"></i> </a></li>
-	</ul>
+
+<section class="row col section">
+
+	I use the pseudonym <a href="http://blog.hypercubed.com/archives/2005/04/01/hypercubed/">hypercubed</a>.
+
+	<div class="nav-pills">
+			<a href="http://plus.google.com/106434515597889238357/"><i class="icon-google-plus-sign"></i> </a>
+			<a href="http://www.facebook.com/hypercubed"><i class="icon-facebook-sign"></i> </a>
+			<a href="http://www.linkedin.com/in/hypercubed"><i class="icon-linkedin-sign"></i> </a>
+			<a href="http://www.twitter.com/hypercubed"><i class="icon-twitter-sign"></i></a>
+
+	</div>
+
 </section>
 
-<section class="hero">
-	<h2>I like to take photographs.</h2>
+<hr class="soften" />
 
-	<ul class="nav nav-pills">
-		<li><a href="http://photos.hypercubed.com/">photos.hypercubed.com</a></li>
-		<li><a href="http://500px.com/hypercubed">∞</a></li>
-		<li><a href="http://flickr.com/hypercubed"><i class="icon-flickr"></i></a></li>
-	</ul>
+<section class="row col section">
+	I program.
+
+	<div class="nav-pills">
+		<a href="http://github.com/Hypercubed/"><i class="icon-github-sign"></i> </a>
+	</div>
 </section>
 
-<section class="hero hero-white">
+<hr class="soften" />
 
-	<h2>I sometimes blog.</h2>
-	<ul class="linklist">
-		<% for document in @getCollection('posts').toJSON().splice(0,5): %>
-			<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
-		<% end %>
-		<li><a href="/archives/">Archives</a></li>
-	</ul>
+<section class="row col section">
+	<h2>I take <a href="photos.hypercubed.com">photographs</a>.</h2>
+
+	<div class="nav-pills">
+		<a href="http://500px.com/hypercubed">
+		<i class="icon-sign-blank"></i>
+		</a>
+		<a href="http://flickr.com/hypercubed"><i class="icon-flickr"></i></a>
+	</div>
+</section>
+
+<hr class="soften" />
+
+<section class="row col section">
+
+	I sometimes <a href="/archives/">blog</a>.
+
+	<div class="span6 offset2">
+		<ul class="linklist">
+			<% for document in @getCollection('posts').toJSON().splice(0,5): %>
+				<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
+			<% end %>
+		</ul>
+	</div>
 
 </section>
 

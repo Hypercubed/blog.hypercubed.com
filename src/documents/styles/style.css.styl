@@ -20,7 +20,6 @@ html
 	margin-top: 0px;
 	
 #container
-	
 	background-color: #fff;
 	padding: 0
 	-webkit-border-radius: 6px;
@@ -32,14 +31,14 @@ html
 		margin-left: 0px
 
 #header-image
-	position: fixed
 	width: 100%
 	margin: 0;
-	padding-top: 300px;
+	padding-top: 20px;
 	background-image: url('/images/5.jpg');
+	background-position: 0px -300px;
 	background-size: cover;
 	text-align: center;
-	height: 600px;
+	height: 100px;
 	background-color: #f5f5f5;
 	//position: fixed;
 	//z-index: -1;
@@ -52,8 +51,13 @@ html
 		text-decoration: none;
 		font-size: 72px;
 
+#header-image.home
+	padding-top: 300px;
+	background-position: 0px 0px;
+	height: 600px;
+
 #content
-	section.hero
+	.section
 		text-align: center;
 		padding: 60px;
 		margin: 30px 0;
@@ -61,17 +65,20 @@ html
 		font-weight: 200;
 		line-height: 60px;
 		color: inherit;
-		-webkit-border-radius: 6px;
-		-moz-border-radius: 6px;
-		border-radius: 6px;
-		background-color: #eeeeee;
+		.nav-pills a:hover
+			text-decoration: none
+		//.nav-pills a
+		//	padding-top: 8px;
+		//	padding-bottom: 8px;
+		//	margin-top: 2px;
+		//	margin-bottom: 2px;
+		//	-webkit-border-radius: 5px;
+		//	-moz-border-radius: 5px;
+		//	border-radius: 5px;
 		.linklist
 			font-size: 18px;
-	section.hero:hover
-		background-color: #666;
-	//section.hero-white
-	//		background-color: white;
-
+			text-align: left
+			list-style-type none
 
 .content
 	padding: 20px;
@@ -129,17 +136,29 @@ section#related, section#feedback
 	padding 1em
 	background-color: #FAFAFA;
 	
-footer.footer
-	padding: 15px 15px 36px 15px;
+.footer
+	text-align: center;
+	padding: 30px 0;
+	margin-top: 70px;
+	border-top: 1px solid #e5e5e5;
+	background-color: #f5f5f5;
 
 pre .coffeescript .javascript, pre .javascript .xml, pre .tex .formula, pre .xml .javascript, pre .xml .vbscript, pre .xml .css, pre .xml .cdata
 	opacity: 1;
 
+hr.soften
+	height: 1px;
+	margin: 70px 0;
+	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+	background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+	border: 0;
 
 // Affix
 
-#header-image.affix
-	position: fixed
+//#header-image.affix
+//	position: fixed
 
 #main-nav
 	float left
@@ -155,7 +174,7 @@ pre .coffeescript .javascript, pre .javascript .xml, pre .tex .formula, pre .xml
 	float left
 
 #post-meta.affix
-	top: 40px
+	top: 20px
 	background-color: none;
 	line-height: 2em;
 	margin-left: -20px
@@ -168,7 +187,7 @@ pre .coffeescript .javascript, pre .javascript .xml, pre .tex .formula, pre .xml
 	float left
 
 #post-title.affix
-	top: 40px
+	top: 20px
 	background-color: #fff;
 	-webkit-box-shadow: 0 1px 10px rgba(0,0,0,.1);
 	-moz-box-shadow: 0 1px 10px rgba(0,0,0,.1);

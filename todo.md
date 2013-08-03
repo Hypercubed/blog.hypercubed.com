@@ -3,12 +3,12 @@
 - [x] Copy http://blog.hypercubed.com/wp-content/
 - [x] Images in /archives/
 - [x] Fix search button
-- [ ] Finish about page
 - [x] Quick check of links
 - [x] Deploy script
-- [ ] Improve landing page
+- [x] Improve landing page
 - [ ] Defunct projects
-- [ ] Dates should be fixed width
+- [x] Dates should be fixed width
+- [ ] Fix 500px icon.  Replace all front-page icons?
 
 # Posts with issues
 

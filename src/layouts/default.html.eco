@@ -39,35 +39,14 @@
 <body>
 	<!-- Markup -->
 	<div class="_container" >
-	<div id="header-image" class="page-header _container">
-		<div class="_container">
-			<h1><a href="<%= @site.url %>">Hypercubed</a></h1>
+		<div id="header-image" class="page-header _container <%= "home" if @document.url == "/" %>">
+			<div class="_container">
+				<h1><a href="<%= @site.url %>">Hypercubed</a></h1>
+			</div>
 		</div>
-	</div>
 	</div>
 
 	<div id="container" class="container">
-
-		<div id="main-nav" class="navbar navbar-static-top" data-spy="affix" data-offset-top="200">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="brand" href="<%= @site.url %>"><i class="icon-home"></i></a>
-					<ul class="nav">
-						<% for document in @getCollection('pages').toJSON(): %>
-							<li typeof="sioc:Page" about="<%= document.url %>" class="<%= 'active'  if @document.url is document.url %>">
-								<a href="<%= document.url %>" property="dc:title"><i class="<%= document.icon %>"></i> <%= document.title %></a>
-							</li>
-						<% end %>
-					</ul>
-					<ul class="nav pull-right">
-			          <li><a class="brand" href="/feed/"><i class="icon-rss"></i> </a></li>
-			          <li></li>
-			        </ul>
-				</div>
-			</div>
-		</div>
-		
-		<!-- div class="social"><div class="container"></div></div -->
 		
 		<section id="content" class="content">
 			<%- @content %>
@@ -75,14 +54,14 @@
 		
 	</div><!-- /container -->
 	
-	<div class="container">
-		<footer class="footer">
-			<p class="pull-left">Copyright &copy; <%- (new Date()).getFullYear() %> - <%= @site.author %> - Powered by <a href="http://docpad.org/">Docpad</a></p>
-			<p class="pull-right">
-				Last updated <%= @getFormattedDate(@site.date) %>
-			</p>
-		</footer>
-	</div>
+	
+	<footer class="footer">
+		<div class="container">
+			<p>All content copyright &copy; 2005 - <%- (new Date()).getFullYear() %> - <%= @site.author %></p>
+			<p>Powered by <a href="http://docpad.org/">Docpad</a></p>
+			<p>Last updated <%= @getFormattedDate(@site.date) %></p>
+		</div>
+	</footer>
 		
 	<!-- Scripts -->
 	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
