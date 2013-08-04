@@ -105,27 +105,6 @@ docpadConfig = {
 				model.setMetaDefaults({layout: "post", standalone: true, collection: 'links'})
 
 	# =================================
-	# Plugins
-
-	plugins:
-		downloader:
-			downloads: [
-				{
-					name: 'Twitter Bootstrap'
-					path: 'src/raw/vendor/twitter-bootstrap'
-					url: 'https://codeload.github.com/twitter/bootstrap/tar.gz/master'
-					tarExtractClean: true
-				},
-				{
-					name: 'Font Awesome'
-					path: 'src/raw/vendor/font-awesome'
-					url: 'https://codeload.github.com/FortAwesome/Font-Awesome/tar.gz/master'
-					tarExtractClean: true
-				}
-			]
-
-
-	# =================================
 	# DocPad Events
 
 	# Here we can define handlers for events that DocPad fires
@@ -161,8 +140,8 @@ docpadConfig = {
 						googleAnalytics: false
 					url:
 						'http://localhost:9778'
-			ignoreCustomPatterns: /2010|2009|2008|2007|2006|2005|2000/
-			#ignoreCustomPatterns: /2005/
+			#ignoreCustomPatterns: /2009|2008/
+			#ignoreCustomPatterns: /2010|2009|2008|2007|2006|2005|2000/
 
 }
 

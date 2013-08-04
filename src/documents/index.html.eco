@@ -6,7 +6,7 @@ isPaged: false
 
 <section class="row col section">
 
-	My name is Jayson Harshbarger.
+	<h2>My name is Jayson Harshbarger.</h2>
 	
 </section>
 
@@ -34,18 +34,22 @@ isPaged: false
 
 	<div class="nav-pills">
 		<a href="http://github.com/Hypercubed/"><i class="icon-github-sign"></i> </a>
+		<a href="https://www.gittip.com/hypercubed/"><i class="icon-gittip"></i> </a>
 	</div>
 </section>
 
 <hr class="soften" />
 
 <section class="row col section">
-	<h2>I take <a href="photos.hypercubed.com">photographs</a>.</h2>
+	I take <a href="photos.hypercubed.com">photographs</a>.
 
 	<div class="nav-pills">
 		<a href="http://500px.com/hypercubed">
-		<i class="icon-sign-blank"></i>
-		</a>
+		<span>
+          <i class="icon-sign-blank"></i>
+          <i class="icon-light icon-500px icon-push"></i>
+        </span>
+        </a>
 		<a href="http://flickr.com/hypercubed"><i class="icon-flickr"></i></a>
 	</div>
 </section>
@@ -53,16 +57,31 @@ isPaged: false
 <hr class="soften" />
 
 <section class="row col section">
+	<div class="row col">
+		I sometimes <a href="/archives/">blog</a>.
+	</div>
 
-	I sometimes <a href="/archives/">blog</a>.
-
-	<div class="span6 offset2">
+	<!-- div class="span6 offset3">
 		<ul class="linklist">
 			<% for document in @getCollection('posts').toJSON().splice(0,5): %>
 				<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
 			<% end %>
 		</ul>
-	</div>
+	</div -->
 
+</section>
+
+<hr class="soften" />
+
+
+<section class="row col section">
+	<div class="nav-pills">
+		<a href="search/">
+		<i class="icon-search"></i>
+        </a>
+		<!-- a href="atsom.xml">
+		<i class="icon-rss-sign"></i>
+        </a -->
+	</div>
 </section>
 

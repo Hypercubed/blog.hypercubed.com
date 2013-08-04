@@ -57,7 +57,7 @@
 	
 	<footer class="footer">
 		<div class="container">
-			<p>All content copyright &copy; 2005 - <%- (new Date()).getFullYear() %> - <%= @site.author %></p>
+			<p>All content copyright &copy; 1999 - <%- (new Date()).getFullYear() %> - <%= @site.author %></p>
 			<p>Powered by <a href="http://docpad.org/">Docpad</a></p>
 			<p>Last updated <%= @getFormattedDate(@site.date) %></p>
 		</div>
