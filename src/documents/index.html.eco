@@ -6,16 +6,15 @@ isPaged: false
 
 <section class="row col section">
 
-	<h2>My name is Jayson Harshbarger.</h2>
+	My name is Jayson Harshbarger.
 	
 </section>
 
 <hr class="soften" />
 
-
 <section class="row col section">
 
-	I use the pseudonym <a href="http://blog.hypercubed.com/archives/2005/04/01/hypercubed/">hypercubed</a>.
+	I use the pseudonym <a href="http://www.hypercubed.com/">hypercubed</a>.
 
 	<div class="nav-pills">
 			<a href="http://plus.google.com/106434515597889238357/" title="google plus"><i class="icon-google-plus-sign"></i> </a>
@@ -30,7 +29,7 @@ isPaged: false
 <hr class="soften" />
 
 <section class="row col section">
-	I <a href="/projects/">program</a>.
+	I <a href="http://www.hypercubed.com/projects/">program</a>.
 
 	<div class="nav-pills">
 		<a href="http://github.com/Hypercubed/" title="github"><i class="icon-github-sign"></i> </a>
@@ -41,7 +40,7 @@ isPaged: false
 <hr class="soften" />
 
 <section class="row col section">
-	I take <a href="photos.hypercubed.com">photographs</a>.
+	I take <a href="http://photos.hypercubed.com">photographs</a>.
 
 	<div class="nav-pills">
 		<a href="http://500px.com/hypercubed" title="500px">
@@ -62,7 +61,7 @@ isPaged: false
 	</div>
 
 	<div class="nav-pills">
-		<a href="atom.xml" title="atom feed">
+		<a href="http://feeds.feedburner.com/HypercubedBlog" title="atom feed">
 		<i class="icon-rss-sign"></i>
         </a>
 	</div>

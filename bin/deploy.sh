@@ -3,6 +3,7 @@ set -o nounset
 set -o errexit
 
 NFLAG=""
+SFLAG=""
 
 while getopts "ns" opt; do
   case $opt in
@@ -24,7 +25,7 @@ source "$DIR/.env"
  
 echo "Deploying ${DIR}/${DEPLOY_SOURCE_DIR} to ${DEPLOY_ACCOUNT}@${DEPLOY_SERVER}:${DEPLOY_DEST_DIR}"
 
-if [ -z SFLAG ]
+if [ -z $SFLAG ]
 then
 	docpad clean
 	docpad generate --env static

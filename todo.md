@@ -18,6 +18,7 @@
 - [ ] Media
 
 
+
 # Required to replace www.hypercubed.com
 - [ ] Defunct projects
 - [ ] Copy http://www.hypercubed.com/assets/files/
@@ -44,6 +45,7 @@
 # Others
 - [ ] Replace all front-page icons?
 - [ ] Check links
+- [ ] Float next and prev buttons
 - [-] Separate archives for each tags?
 - [x] Separate archive for links
 - [x] Normalize tags
@@ -54,3 +56,4 @@
 - [x] Fix title affix background
 - [ ] Fix header image?
 - [ ] Local copy of cdn resources?
+- [ ] Fix extension-not-rendering
