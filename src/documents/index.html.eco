@@ -18,10 +18,10 @@ isPaged: false
 	I use the pseudonym <a href="http://blog.hypercubed.com/archives/2005/04/01/hypercubed/">hypercubed</a>.
 
 	<div class="nav-pills">
-			<a href="http://plus.google.com/106434515597889238357/"><i class="icon-google-plus-sign"></i> </a>
-			<a href="http://www.facebook.com/hypercubed"><i class="icon-facebook-sign"></i> </a>
-			<a href="http://www.linkedin.com/in/hypercubed"><i class="icon-linkedin-sign"></i> </a>
-			<a href="http://www.twitter.com/hypercubed"><i class="icon-twitter-sign"></i></a>
+			<a href="http://plus.google.com/106434515597889238357/" title="google plus"><i class="icon-google-plus-sign"></i> </a>
+			<a href="http://www.facebook.com/hypercubed" title="facebook"><i class="icon-facebook-sign"></i> </a>
+			<a href="http://www.linkedin.com/in/hypercubed" title="linkedin"><i class="icon-linkedin-sign"></i> </a>
+			<a href="http://www.twitter.com/hypercubed" title="twitter"><i class="icon-twitter-sign"></i></a>
 
 	</div>
 
@@ -30,11 +30,11 @@ isPaged: false
 <hr class="soften" />
 
 <section class="row col section">
-	I program.
+	I <a href="/projects/">program</a>.
 
 	<div class="nav-pills">
-		<a href="http://github.com/Hypercubed/"><i class="icon-github-sign"></i> </a>
-		<a href="https://www.gittip.com/hypercubed/"><i class="icon-gittip"></i> </a>
+		<a href="http://github.com/Hypercubed/" title="github"><i class="icon-github-sign"></i> </a>
+		<a href="https://www.gittip.com/hypercubed/" title="gittip"><i class="icon-gittip"></i> </a>
 	</div>
 </section>
 
@@ -44,13 +44,13 @@ isPaged: false
 	I take <a href="photos.hypercubed.com">photographs</a>.
 
 	<div class="nav-pills">
-		<a href="http://500px.com/hypercubed">
+		<a href="http://500px.com/hypercubed" title="500px">
 		<span>
           <i class="icon-sign-blank"></i>
           <i class="icon-light icon-500px icon-push"></i>
         </span>
         </a>
-		<a href="http://flickr.com/hypercubed"><i class="icon-flickr"></i></a>
+		<a href="http://flickr.com/hypercubed" title="flickr"><i class="icon-flickr"></i></a>
 	</div>
 </section>
 
@@ -58,16 +58,14 @@ isPaged: false
 
 <section class="row col section">
 	<div class="row col">
-		I sometimes <a href="/archives/">blog</a>.
+		I sometimes <a href="http://blog.hypercubed.com/archives/">blog</a>.
 	</div>
 
-	<!-- div class="span6 offset3">
-		<ul class="linklist">
-			<% for document in @getCollection('posts').toJSON().splice(0,5): %>
-				<li><span class="date"><%= @getFormattedDate(document.date) %></span> » <a href="<%= document.url %>"><%= document.title %></a></li>
-			<% end %>
-		</ul>
-	</div -->
+	<div class="nav-pills">
+		<a href="atom.xml" title="atom feed">
+		<i class="icon-rss-sign"></i>
+        </a>
+	</div>
 
 </section>
 
@@ -76,12 +74,9 @@ isPaged: false
 
 <section class="row col section">
 	<div class="nav-pills">
-		<a href="search/">
+		<a href="search/" title="search hypercubed sites">
 		<i class="icon-search"></i>
         </a>
-		<!-- a href="atsom.xml">
-		<i class="icon-rss-sign"></i>
-        </a -->
 	</div>
 </section>
 

@@ -9,8 +9,8 @@ layout: default
 	<div>
 		<ul class="nav nav-pills">
 			<li><a href="/archives/">by date</a></li>
-			<li><a href="/tags/">by tag</a></li>
-			<li><a href="/links/">links</a></li>
+			<li><a href="/archives/tags.html">by tag</a></li>
+			<li><a href="/archives/links.html">links</a></li>
 		<ul>
 	</div>
 

@@ -14,7 +14,7 @@ docpadConfig = {
 		# Specify some site properties
 		site:
 			# The production url of our website
-			url: "http://blog.hypercubed.com"
+			url: "/"
 
 			# Here are some old site urls that you would like to redirect from
 			oldUrls: [
@@ -139,9 +139,9 @@ docpadConfig = {
 					services:
 						googleAnalytics: false
 					url:
-						'http://localhost:9778'
+						'/'
 			#ignoreCustomPatterns: /2009|2008/
-			#ignoreCustomPatterns: /2010|2009|2008|2007|2006|2005|2000/
+			ignoreCustomPatterns: /2010|2009|2008|2007|2006|2005|2000/
 
 }
 

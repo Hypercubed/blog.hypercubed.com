@@ -1,4 +1,6 @@
-# Required
+# Required to replace jharshbarger.com
+
+# Required to replace blog.hypercubed.com
 
 - [x] Copy http://blog.hypercubed.com/wp-content/
 - [x] Images in /archives/
@@ -6,9 +8,22 @@
 - [x] Quick check of links
 - [x] Deploy script
 - [x] Improve landing page
-- [ ] Defunct projects
 - [x] Dates should be fixed width
-- [ ] Fix 500px icon.  Replace all front-page icons?
+- [x] Fix 500px icon.
+- [ ] About, support
+- [ ] Blog landing page?
+- [ ] Contact?
+- [ ] Backup database.
+- [ ] Backup code
+- [ ] Media
+
+
+# Required to replace www.hypercubed.com
+- [ ] Defunct projects
+- [ ] Copy http://www.hypercubed.com/assets/files/
+- [ ] Search and replace these links?
+- [ ] Backup database.
+- [ ] Backup code.
 
 # Posts with issues
 
@@ -21,10 +36,13 @@
 - [ ] /archives/2005/04/01/hypercubed
 - [x] /archives/2011/05/22/japan-aprilmay-2011 images
 
-# Others
+# Deploy steps
+- [ ] jharshbarger.com
+- [ ] hypercubed.com
+- [ ] blog.hypercubed.com
 
-- [ ] Copy http://www.hypercubed.com/assets/files/
-- [ ] Search and replace these links?
+# Others
+- [ ] Replace all front-page icons?
 - [ ] Check links
 - [-] Separate archives for each tags?
 - [x] Separate archive for links
@@ -35,3 +53,4 @@
 	- [ ] Fork docpad-plugin-services
 - [x] Fix title affix background
 - [ ] Fix header image?
+- [ ] Local copy of cdn resources?
