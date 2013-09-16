@@ -2,29 +2,25 @@
 layout: default
 ---
 
+<ul class="pager">
 <% collection = @getCollection(@document.collection || 'posts').toJSON() %>
 <% for document,documentIndex in collection: %>
-    <% if @document.id is document.id: %>
-		<% @index = documentIndex %>
-        <% @next = collection[@index-1] %>
-		<% @prev = collection[@index+1] %>
-    <% end %>
+	<% if @document.id is document.id: %>
+		<% if documentIndex < collection.length-1: %>
+			<li class="previous">
+				<a href="<%= collection[documentIndex+1].url %>" class="previous"><icon class="icon-chevron-sign-left"></icon> Older</a>
+			</li>
+		<% end %>
+		<% if documentIndex > 0: %>
+			<li class="next">
+			<a href="<%= collection[documentIndex-1].url %>" class="next"><icon class="icon-chevron-sign-right"></icon> Newer</a>
+			</li>
+		<% end %>
+		<% collection = null %>
+		<% break %>
+	<% end %>
 <% end %>
-
-<ul class="pager">
-  <% if @prev: %>
-  <li class="previous">
-    <a href="<%= @prev.url %>" class="previous"><icon class="icon-chevron-sign-left"></icon> Older</a>
-  </li>
-  <% end %>
-  <% if @next: %>
-  <li class="next">
-    <a href="<%= @next.url %>" class="next"><icon class="icon-chevron-sign-right"></icon> Newer</a>
-  </li>
-  <% end %>
 </ul>
-
-
 
 <article id="post" class="post">
 

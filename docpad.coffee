@@ -14,7 +14,7 @@ docpadConfig = {
 		# Specify some site properties
 		site:
 			# The production url of our website
-			url: "/"
+			url: "http://blog.hypercubed.com"
 
 			# The default title of our website
 			title: "Hypercubed"
@@ -107,7 +107,7 @@ docpadConfig = {
 					url:
 						'/'
 			#ignoreCustomPatterns: /2009|2008/
-			ignoreCustomPatterns: /2010|2009|2008|2007|2006|2005|2000/
+			ignoreCustomPatterns: /2010|200./
 		static:
 			ignoreCustomPatterns: /drafts/
 }

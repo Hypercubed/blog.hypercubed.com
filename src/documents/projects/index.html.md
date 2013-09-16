@@ -26,6 +26,9 @@ layout: page
 
 <section class="projects">
 	<h1>Older projects</h1>
+  <div class="row-fluid">
+    <i class="icon-archive icon-6"></i>
+  </div>
 	<p>If you are interested these please send me a message on [twitter](http://www.twitter.com/hypercubed/) or using [about.me](http://about.me/hypercubed).</p>
 	<div class="row-fluid">
       <div class="span4">
@@ -34,11 +37,11 @@ layout: page
       </div>
       <div class="span4">
         <h2>Coordinate Exchange</h2>
-        <p>Handle GPS coordinates in MapPoint.</p>
+        <p>Handle (import/export) GPS coordinates in MapPoint.</p>
       </div>
       <div class="span4">
         <h2>NWN Tileset Duplicator</h2>
-        <p>Tool to help duplicated tilesets in Neverwinter Nights.</p>
+        <p>Tool to help duplicate tilesets in Neverwinter Nights.</p>
       </div>
     </div>
 </section>

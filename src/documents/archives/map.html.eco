@@ -1,0 +1,13 @@
+---
+title: Archives
+layout: archive
+pageOrder: 3
+icon: icon-calendar
+---
+
+<nav class="linklist">
+	<% for document,index in @getCollection('posts').toJSON(): %>
+		<%= document.url %>
+		<%= @document.post_id %> <%= @document.guid %>, <%= @document.slug %>;
+	<% end %>
+</nav>
