@@ -3,3 +3,5 @@ out/
 src/raw/vendor/
 .env
 src/media/
+src/documents/drafts/
+src/raw/wp-content/

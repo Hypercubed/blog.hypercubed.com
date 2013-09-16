@@ -16,24 +16,14 @@ docpadConfig = {
 			# The production url of our website
 			url: "/"
 
-			# Here are some old site urls that you would like to redirect from
-			oldUrls: [
-				'www.website.com',
-				'website.herokuapp.com'
-			]
-
 			# The default title of our website
 			title: "Hypercubed"
 
 			# The website description (for SEO)
-			description: """
-				When your website appears in search results in say Google, the text here will be shown underneath your website's title.
-				"""
+			description: ""
 
 			# The website keywords (for SEO) separated by commas
-			keywords: """
-				place, your, website, keywoards, here, keep, them, related, to, the, content, of, your, website
-				"""
+			keywords: ""
 
 			# The website author's name
 			author: "J. Harshbarger"
@@ -104,33 +94,9 @@ docpadConfig = {
 			database.findAllLive({status:{$has:'publish'},tags:{$in:['Links']}}, [date:-1]).on "add", (model) ->
 				model.setMetaDefaults({layout: "post", standalone: true, collection: 'links'})
 
-	# =================================
-	# DocPad Events
-
-	# Here we can define handlers for events that DocPad fires
-	# You can find a full listing of events on the DocPad Wiki
-	events:
-
-		# Server Extend
-		# Used to add our own custom routes to the server before the docpad routes are added
-		serverExtend: (opts) ->
-			# Extract the server from the options
-			{server} = opts
-			docpad = @docpad
-
-			# As we are now running in an event,
-			# ensure we are using the latest copy of the docpad configuraiton
-			# and fetch our urls from it
-			latestConfig = docpad.getConfig()
-			oldUrls = latestConfig.templateData.site.oldUrls or []
-			newUrl = latestConfig.templateData.site.url
-
-			# Redirect any requests accessing one of our sites oldUrls to the new site url
-			server.use (req,res,next) ->
-				if req.headers.host in oldUrls
-					res.redirect(newUrl+req.url, 301)
-				else
-					next()
+		drafts: (database) ->
+			database.findAllLive({status:{$has:'draft'}}, [date:-1]).on "add", (model) ->
+				model.setMetaDefaults({layout: "post", standalone: true, collection: 'drafts'})
 					
 	environments:
 		development:
@@ -142,7 +108,8 @@ docpadConfig = {
 						'/'
 			#ignoreCustomPatterns: /2009|2008/
 			ignoreCustomPatterns: /2010|2009|2008|2007|2006|2005|2000/
-
+		static:
+			ignoreCustomPatterns: /drafts/
 }
 
 

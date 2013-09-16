@@ -1,4 +1,5 @@
 # Required to replace jharshbarger.com
+- [x] Done
 
 # Required to replace blog.hypercubed.com
 
@@ -10,21 +11,25 @@
 - [x] Improve landing page
 - [x] Dates should be fixed width
 - [x] Fix 500px icon.
-- [ ] About, support
-- [ ] Blog landing page?
-- [ ] Contact?
+- [-] About, support?
+- [-] Blog landing page?
+- [-] Contact?
 - [ ] Backup database.
 - [ ] Backup code
 - [ ] Media
-
+- [ ] Map disqus urls
+- [x] Deploy
 
 
 # Required to replace www.hypercubed.com
-- [ ] Defunct projects
+- [x] Defunct projects
 - [ ] Copy http://www.hypercubed.com/assets/files/
+- [ ] Copy blog/images/
 - [ ] Search and replace these links?
 - [ ] Backup database.
 - [ ] Backup code.
+- [ ] Update index.html hypercubed.com link
+- [ ] Deploy
 
 # Posts with issues
 
@@ -36,9 +41,11 @@
 - [ ] /archives/2005/04/03/the-results-of-my-research
 - [ ] /archives/2005/04/01/hypercubed
 - [x] /archives/2011/05/22/japan-aprilmay-2011 images
+- [ ] /archives/2005/06/25/show-me-your-underpants-code/
+- [ ] /archives/2005/04/01/hypercubed/
 
 # Deploy steps
-- [ ] jharshbarger.com
+- [x] jharshbarger.com
 - [ ] hypercubed.com
 - [ ] blog.hypercubed.com
 
