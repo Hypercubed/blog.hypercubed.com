@@ -43,6 +43,7 @@
 - [x] /archives/2011/05/22/japan-aprilmay-2011 images
 - [ ] /archives/2005/06/25/show-me-your-underpants-code/
 - [ ] /archives/2005/04/01/hypercubed/
+/archives/2005/04/28/skeptics’-circle-7
 
 # Deploy steps
 - [x] jharshbarger.com

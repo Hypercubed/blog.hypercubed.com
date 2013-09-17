@@ -39,7 +39,7 @@ layout: default
 					<i class="icon-tag"></i> 
 					<span class="note-tags">
 						<% for tag in @document.tags: %>
-							<a href="/tags#<%= tag %>"><%= tag %></a>
+							<a href="<%= @site.blogUrl %>/archives/tags#<%= tag %>"><%= tag %></a>
 						<% end %>
 					</span>
 
