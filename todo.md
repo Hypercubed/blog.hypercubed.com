@@ -14,9 +14,9 @@
 - [-] About, support?
 - [-] Blog landing page?
 - [-] Contact?
-- [ ] Backup database.
-- [ ] Backup code
-- [ ] Media
+- [ ] Backup old database.
+- [ ] Backup old code
+- [x] Media
 - [ ] Map disqus urls
 - [x] Deploy
 
@@ -25,11 +25,11 @@
 - [x] Defunct projects
 - [ ] Copy http://www.hypercubed.com/assets/files/
 - [ ] Copy blog/images/
-- [ ] Search and replace these links?
+- [ ] Search and replace old links.
 - [ ] Backup database.
 - [ ] Backup code.
-- [ ] Update index.html hypercubed.com link
-- [ ] Deploy
+- [x] Update index.html hypercubed.com link
+- [x] Deploy
 
 # Posts with issues
 
@@ -46,8 +46,9 @@
 
 # Deploy steps
 - [x] jharshbarger.com
-- [ ] hypercubed.com
-- [ ] blog.hypercubed.com
+- [x] hypercubed.com
+- [x] blog.hypercubed.com
+- [ ] gh-pages??
 
 # Others
 - [ ] Replace all front-page icons?
@@ -62,5 +63,6 @@
 	- [ ] Fork docpad-plugin-services
 - [x] Fix title affix background
 - [ ] Fix header image?
+- [ ] Parallex scrolling
 - [ ] Local copy of cdn resources?
 - [ ] Fix extension-not-rendering

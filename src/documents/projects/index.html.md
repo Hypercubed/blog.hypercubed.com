@@ -24,6 +24,8 @@ layout: page
     </div>
 </section>
 
+<hr class="soften" />
+
 <section class="projects">
 	<h1>Older projects</h1>
   <div class="row-fluid">

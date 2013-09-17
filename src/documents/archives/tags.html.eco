@@ -4,7 +4,7 @@ layout: archive
 icon: icon-tags
 ---
 
-<% tags = {} %>
+<% tags = [] %>
 <% for document in @getCollection('posts').toJSON(): %>
 	<% for tag in document.tags: %>
 		<% tags[tag] = [] if (!tags[tag]) %>

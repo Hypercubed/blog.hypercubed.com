@@ -15,6 +15,8 @@ docpadConfig = {
 		site:
 			# The production url of our website
 			url: "http://blog.hypercubed.com"
+			blogUrl: "http://blog.hypercubed.com"
+			mainUrl: "http://hypercubed.com"
 
 			# The default title of our website
 			title: "Hypercubed"
@@ -104,8 +106,9 @@ docpadConfig = {
 				site:
 					services:
 						googleAnalytics: false
-					url:
-						'/'
+					url: 'http://localhost:9778'
+					blogUrl: "http://localhost:9778"
+					mainUrl: "http://localhost:9778"
 			#ignoreCustomPatterns: /2009|2008/
 			ignoreCustomPatterns: /2010|200./
 		static:

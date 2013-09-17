@@ -14,7 +14,7 @@ isPaged: false
 
 <section class="row col section">
 
-	I use the pseudonym <a href="http://www.hypercubed.com/">hypercubed</a>.
+	I use the pseudonym <a href="<%= @site.mainUrl %>">hypercubed</a>.
 
 	<div class="nav-pills">
 			<a href="http://plus.google.com/106434515597889238357/" title="google plus"><i class="icon-google-plus-sign"></i> </a>
@@ -29,7 +29,7 @@ isPaged: false
 <hr class="soften" />
 
 <section class="row col section">
-	I <a href="http://www.hypercubed.com/projects/">program</a>.
+	I <a href="<%= @site.mainUrl %>/projects/">program</a>.
 
 	<div class="nav-pills">
 		<a href="http://github.com/Hypercubed/" title="github"><i class="icon-github-sign"></i> </a>
@@ -57,7 +57,7 @@ isPaged: false
 
 <section class="row col section">
 	<div class="row col">
-		I sometimes <a href="http://blog.hypercubed.com/archives/">blog</a>.
+		I sometimes <a href="<%= @site.blogUrl %>/archives/">blog</a>.
 	</div>
 
 	<div class="nav-pills">
