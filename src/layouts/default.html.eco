@@ -34,7 +34,7 @@
 	<div class="_container" >
 		<div id="header-image" class="page-header _container <%= "home" if @document.url == "/" %>">
 			<div class="_container">
-				<h1><a href="<%= @site.url %>">Hypercubed</a></h1>
+				<h1><a href="<%= @site.mainUrl %>">Hypercubed</a></h1>
 				<!-- h2><%= @document.title %></h2 -->
 			</div>
 		</div>
