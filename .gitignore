@@ -5,3 +5,5 @@ src/raw/vendor/
 src/media/
 src/documents/drafts/
 src/raw/wp-content/
+src/drafts/*
+!src/drafts/.gitkeep

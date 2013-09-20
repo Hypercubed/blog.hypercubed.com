@@ -1,0 +1,9 @@
+{
+  layout: 'post'
+  title: @document.__basename
+  post_name: @document.__basename
+  status: 'draft'
+  tags: [ 'post' ]
+  __content: "Your content here"
+  __outputdir: "src/drafts/"
+}

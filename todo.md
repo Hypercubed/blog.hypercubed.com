@@ -34,16 +34,15 @@
 # Posts with issues
 
 - [ ] /archives/2005/06/23/spell-with-flickr
-- [ ] archives/2005/06/15/in-memory-of-dr-yian-chang
+- [ ] /archives/2005/06/15/in-memory-of-dr-yian-chang
 - [ ] /archives/2005/06/04/testing-blogjet
 - [x] /archives/2005/04/30/visual-studio-cannot-debug-mappoint-add-in-if-net-20-runtime-installed
 - [ ] /archives/2005/04/06/the-american-physical-society-presents-a-century-of-physics
 - [ ] /archives/2005/04/03/the-results-of-my-research
-- [ ] /archives/2005/04/01/hypercubed
 - [x] /archives/2011/05/22/japan-aprilmay-2011 images
 - [ ] /archives/2005/06/25/show-me-your-underpants-code/
 - [ ] /archives/2005/04/01/hypercubed/
-/archives/2005/04/28/skeptics’-circle-7
+- [x] /archives/2005/04/28/skeptics’-circle-7
 
 # Deploy steps
 - [x] jharshbarger.com
