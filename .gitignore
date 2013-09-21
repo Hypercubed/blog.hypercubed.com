@@ -1,0 +1,4 @@
+node_modules/
+.env
+drafts/
+wp-content/

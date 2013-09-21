@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Hypercubed</title>
+	<subtitle></subtitle>
+	<link href="http://hypercubed.github.io/atom.xml" rel="self"/>
+	<link href="http://hypercubed.github.io"/>
+	<updated>2013-09-21T06:01:54.504Z</updated>
+	<id>http://hypercubed.github.io</id>
+	<author>
+		<name>J. Harshbarger</name>
+	</author>
+
+	
+</feed>
