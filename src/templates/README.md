@@ -1,3 +1,6 @@
+Drafting and publishing a blog post (in [docpad](https://github.com/bevry/docpad)) using [frontman](https://github.com/Hypercubed/frontman)
+===
+
 Create a new blog post:
 
     $  frontman new.html.md -t src/templates/draft_post.cson -o .
